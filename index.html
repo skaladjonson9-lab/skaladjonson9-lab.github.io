@@ -10,15 +10,15 @@
             max-width: 700px; 
             margin: 0 auto; 
             padding: 20px; 
-            background-color: #3b6ea5; 
             
-            /* РАСТЯГИВАЕМ КАРТИНКУ НА ВЕСЬ ЭКРАН */
-            background-image: url("windows.gif"); 
+            /* ЭФФЕКТ ЗАТЕМНЕНИЯ: Накладываем тёмный слой поверх картинки */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url("windows.gif") #3b6ea5; 
             background-repeat: no-repeat; 
-            background-size: cover;          /* Картинка заполнит весь экран */
-            background-position: center;     /* Центрируем её */
-            background-attachment: fixed;    /* Фон застынет на месте при прокрутке */
-            image-rendering: pixelated;      /* Сохраняем чёткие ретро-пиксели при увеличении */
+            background-size: cover;          
+            background-position: center;     
+            background-attachment: fixed;    
+            image-rendering: pixelated;      
             
             color: #000000; 
         }
@@ -29,7 +29,6 @@
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
         
-        /* Добавили синюю плашку-подложку, чтобы заголовок идеально читался на любом фоне */
         .feed-title { 
             color: #fff; 
             background: #000080; 
@@ -45,9 +44,10 @@
         .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
         .post-date { font-size: 0.85em; color: #555; font-weight: bold; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
+        
         .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; }
         .blink-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-        .blink-btn { display: inline-block; width: 88px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 10px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; }
+        .blink-btn { display: inline-block; width: 100px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; font-family: sans-serif; }
         .blink-btn.tg { background: #0088cc; }
         .blink-btn.gh { background: #24292e; }
     </style>
@@ -80,7 +80,7 @@
     </div>
 
     <div class="post">
-        <div class="post-date">12Box сентября 2026 г. // Стрим</div>
+        <div class="post-date">12 сентября 2026 г. // Стрим</div>
         <h3>Эстетика Webcore и Ретро-инди</h3>
         <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
     </div>
@@ -93,18 +93,19 @@
 
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Старт</div>
-        <h3>Мой первый пост в IndieWeb!💾</h3>
+        <h3>Мой первый post в IndieWeb!💾</h3>
         <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
     </div>
 
     <div class="blink-footer">
-        <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px #000;">Кнопки обмена ссылками (Blinks):</div>
+        <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
-            <a href="hhttps://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
+            <a href="https://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
             <a href="https://t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
 
 </body>
 </html>
+
 
