@@ -6,10 +6,10 @@
     <title>EvaYosevna // Персональная страница</title>
     <style>
         /* ЖЕСТКАЯ ФИКСАЦИЯ КУРСОРA-ДИСКА НА ПК */
-        html, body, a, button, div, span, img, iframe {
+        html, body, a, button, div, span, img, iframe, input {
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>💿</text></svg>") 16 16, auto !important;
         }
-        a:hover, button:hover, .winamp-btn:hover, .facts-toggle-btn:hover, .webring-btn:hover, .gallery-btn:hover, .clicker-btn:hover, .fish:hover {
+        a:hover, button:hover, .winamp-btn:hover, .facts-toggle-btn:hover, .webring-btn:hover, .gallery-btn:hover, .clicker-btn:hover, .fish:hover, [onclick]:hover {
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>👆</text></svg>") 16 16, pointer !important;
         }
 
@@ -23,16 +23,17 @@
 
         .main-content { max-width: 700px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }
         
-        /* ИГРОВОЙ АКВАРИУМ: Слои и физика */
+        /* ИГРОВОЙ АКВАРИУМ: Плавный и медленный подъём рыб со дна вверх (4 секунды) */
         .fish-aquarium { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99; }
-        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; pointer-events: auto; user-select: none; transition: top 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045), transform 0.2s ease; }
+        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; pointer-events: auto; user-select: none; transition: top 4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.2s ease; }
+        .fish:active { transform: scaleX(-1) scale(1.4) rotate(15deg) !important; }
         
         .fish-1 { top: 25%; animation-duration: 18s; }
         .fish-2 { top: 55%; font-size: 45px; animation-duration: 25s; animation-delay: -5s; }
         .fish-3 { top: 85%; font-size: 35px; animation-duration: 14s; animation-delay: -2s; }
         @keyframes swim { 0% { left: -120px; transform: scaleX(-1); } 100% { left: calc(100% + 120px); transform: scaleX(-1); } }
         
-        /* МЕГА-ПУЗЫРИ (35px - 50px) */
+        /* СОЧНЫЕ МЕГА-ПУЗЫРИ */
         .bubble-container { position: fixed; bottom: -60px; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .bubble { position: absolute; background: rgba(255, 255, 255, 0.12); border: 2.5px solid rgba(255, 255, 255, 0.3); border-radius: 50%; bottom: -60px; animation: floatUp linear infinite; box-shadow: inset -5px -5px 10px rgba(255,255,255,0.2); }
         .b1 { left: 8%; width: 42px; height: 42px; animation-duration: 7s; }
@@ -76,6 +77,9 @@
         .leaderboard-table td { padding: 6px; border: 1px solid #d4d0c8; color: #000; }
         .leaderboard-table tr:nth-child(even) { background: #f0eee9; }
 
+        /* Поле ввода Windows 95 */
+        .win95-input { background: #fff; border: 2px inset #fff; color: #000; padding: 4px; font-family: monospace; font-size: 1em; width: 80%; max-width: 250px; margin-bottom: 15px; outline: none; }
+
         .gallery-box { background: #e8e7e3; border: 2px inset #fff; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 5px; }
         .gallery-screen { width: 100%; max-width: 400px; height: 250px; background: #000; border: 2px inset #fff; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; }
         .gallery-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
@@ -112,16 +116,39 @@
     <div class="fish-aquarium" id="fishAquarium">
         <div class="fish fish-1" id="f1">🐟</div>
         <div class="fish fish-2" id="f2">🐠</div>
-        <div class="fish fish-3"id="f3">🐡</div>
+        <div class="fish fish-3" id="f3">🐡</div>
+    </div>
+
+    <!-- КАСТОМНОЕ ОКНО WINDOWS 95: ВВОД НИКНЕЙМА -->
+    <div class="modal-overlay" id="nicknameModal" style="display: flex;">
+        <div class="modal-window" style="max-width: 320px; text-align: center;">
+            <div class="window-title"><span>User_Registration.exe</span></div>
+            <div style="padding: 15px;">
+                <p style="margin-top:0; font-weight:bold;">Введите ваш Nickname для Лидерборда:</p>
+                <input type="text" id="nickInput" class="win95-input" value="EvaYosevna" maxlength="15">
+                <br>
+                <button class="clicker-btn" onclick="saveNickname()">ОК</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- КАСТОМНОЕ ОКНО WINDOWS 95: ПАСХАЛКА ХЕНКАЛЯ (НА 500 ОЧКОВ) -->
+    <div class="modal-overlay" id="easterEggModal">
+        <div class="modal-window" style="max-width: 380px; text-align: center;">
+            <div class="window-title"><span>Message.exe</span><span style="cursor:pointer;" onclick="closeEasterEgg()">🗙</span></div>
+            <div style="padding: 20px; background: #e8e7e3; border: 2px inset #fff; margin: 10px;">
+                <p style="font-size: 1.1em; font-weight: bold; margin-top: 0; color: #000;">Системное сообщение Windows 95:</p>
+                <p style="font-size: 1em; color: #000080; font-weight: bold;">Спасибо за тестирование Хенкалю!</p>
+                <br>
+                <button class="clicker-btn" style="padding: 4px 25px;" onclick="closeEasterEgg()">ОК</button>
+            </div>
+        </div>
     </div>
 
     <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ХРОНИКИ INDIEWEB -->
     <div class="modal-overlay" id="factsModal">
         <div class="modal-window">
-            <div class="window-title">
-                <span>IndieWeb_History.txt</span>
-                <span style="cursor:pointer; font-weight:bold;" onclick="closeFacts()">🗙</span>
-            </div>
+            <div class="window-title"><span>IndieWeb_History.txt</span><span style="cursor:pointer;" onclick="closeFacts()">🗙</span></div>
             <div class="modal-body">
                 <h3 style="margin-top:0; color:#000080;">Хроники Свободного Интернета (1990 — 2026)</h3>
                 <hr>
@@ -142,23 +169,21 @@
         </div>
     </div>
 
-    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ЛИДЕРБОРД -->
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ЖИВОЙ ЛИДЕРБОРД (БЕЗ ХЕНКАЛЯ) -->
     <div class="modal-overlay" id="leaderboardModal">
         <div class="modal-window">
-            <div class="window-title">
-                <span>Leaderboard.exe</span>
-                <span style="cursor:pointer; font-weight:bold;" onclick="closeLeaderboard()">🗙</span>
-            </div>
+            <div class="window-title"><span>Leaderboard.exe</span><span style="cursor:pointer;" onclick="closeLeaderboard()">🗙</span></div>
             <div style="padding: 15px;">
                 <h3 style="margin-top:0; color:#000080; text-align:center;">🏆 Топ Игроков (Рыбный Кликер)</h3>
                 <table class="leaderboard-table">
                     <tr><th>Место</th><th>Игрок</th><th>Очки</th></tr>
-                    <tr><td>1</td><td>Хенкаль 👑</td><td>9999</td></tr>
-                    <tr><td>2</td><td>EvaYosevna</td><td id="lbYourScore">0</td></tr>
-                    <tr><td>3</td><td>IndieMaster</td><td>450</td></tr>
-                    <tr><td>4</td><td>РетроХакер</td><td>310</td></tr>
-                    <tr><td>5</td><td>Guest_95</td><td>120</td></tr>
+                    <tr id="trPos1"><td>1</td><td>IndieMaster 👑</td><td>1500</td></tr>
+                    <tr id="trPos2"><td>2</td><td>РетроХакер</td><td>850</td></tr>
+                    <tr id="trPos3"><td>3</td><td>WebSurfer</td><td>450</td></tr>
+                    <tr id="trPos4"><td>4</td><td>Guest_95</td><td>210</td></tr>
+                    <tr id="trPos5"><td>5</td><td>Noob_Clicker</td><td>50</td></tr>
                 </table>
+                <p style="font-size:0.8em; color:#555; text-align:center; margin-top:10px;">Ваш ник динамически перемещается в таблице по мере набора очков!</p>
             </div>
             <div style="text-align:right; padding: 0 15px 15px 15px;">
                 <button class="winamp-btn" style="color:#000; padding:4px 15px;" onclick="closeLeaderboard()">Закрыть</button>
@@ -168,73 +193,6 @@
 
     <!-- НАЧАЛО ГЛАВНОГО КОНТЕНТА -->
     <div class="main-content">
-        <!-- Главное окно сайта -->
-        <div class="window">
-            <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
-            <div class="profile">
-                <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
-                <div class="profile-text">
-                    <h1>Привет, я EvaYosevna! 👋</h1>
-                    <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
-                    
-                    <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
-                        <div class="sticker-badge">💻 Win95</div>
-                        <div class="sticker-badge">💾 Save</div>
-                        <div class="sticker-badge">🌐 IE</div>
-                    </div>
-
-                    <div class="facts-toggle-btn" onclick="openFacts()">💾 Хроники IndieWeb (1990-2026)</div>
-
-                    <div class="winamp-player" id="playerContainer">
-                        <div class="winamp-title">♫ Winamp Audio Player</div>
-                        <div class="winamp-display">
-                            <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
-                            <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
-                                <div class="eq-bar eq-1"></div>
-                                <div class="eq-bar eq-2"></div>
-                                <div class="eq-bar eq-3"></div>
-                            </div>
-                        </div>
-                        <div class="winamp-controls">
-                            <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
-                            <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
-                        </div>
-                        <audio id="myAudio" src="p3b3 - The Scooby Snacks.m4a" loop></audio>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <!-- ОКНО: КЛИКЕР РЫБОК -->
-        <div class="window">
-            <div class="window-title"><span>Рыбный_Кликер.exe</span><span>🗙</span></div>
-            <div class="clicker-box">
-                <p style="margin-top:0; font-weight:bold;">Жми прямо по проплывающим рыбам!</p>
-                <div class="clicker-score" id="scoreDisplay">000000</div>
-                <br>
-                <button class="clicker-btn" onclick="openLeaderboard()">🏆 Лидерборд</button>
-                <button class="clicker-btn" onclick="spawnExtraFish()">🐟 Покормить (Больше рыб)</button>
-            </div>
-        </div>
-
-        <!-- ОКНО: ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
-        <div class="window">
-            <div class="window-title"><span>Галерея_Мемеоза.exe</span><span>🗙</span></div>
-            <div class="gallery-box">
-                <div class="gallery-screen">
-                    <img class="gallery-img active" src="Interior_03.gif" alt="Interior">
-                    <img class="gallery-img" src="screenwindowsvhs.gif" alt="VHS Screen">
-                    <img class="gallery-img" src="images (16).jpeg" alt="Image 16">
-                </div>
-                <div class="gallery-controls">
-                    <button class="gallery-btn" onclick="changeSlide(-1)">◀ Назад</button>
-                    <button class="gallery-btn" onclick="changeSlide(1)">Вперед ▶</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="feed-title">💾 Мой Борт-Журнал</div>
         <!-- ПОСТЫ БОРТ-ЖУРНАЛА -->
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
@@ -278,7 +236,7 @@
             <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
         </div>
 
-        <!-- ПОДВАЛ С ТВОИМИ ССЫЛКАМИ И ВЕБ-РИНГОМ -->
+        <!-- ПОДВАЛ И ВЕБ-РИНГ -->
         <div class="blink-footer">
             <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
             <div class="blink-buttons">
@@ -299,7 +257,6 @@
 
     </div> <!-- main-content -->
 
-    <!-- КОНТЕЙНЕР МЕГА-ПУЗЫРЕЙ -->
     <div class="bubble-container" id="bubbleContainer">
         <div class="bubble b1"></div>
         <div class="bubble b2"></div>
@@ -307,19 +264,19 @@
         <div class="bubble b4"></div>
         <div class="bubble b5"></div>
     </div>
-
     <script>
         var audio = document.getElementById("myAudio");
         var container = document.getElementById("playerContainer");
         var modal = document.getElementById("factsModal");
         var lbModal = document.getElementById("leaderboardModal");
+        var nickModal = document.getElementById("nicknameModal");
 
         function playMusic() { audio.play().catch(function(e){}); container.classList.add("playing"); }
         function stopMusic() { audio.pause(); audio.currentTime = 0; container.classList.remove("playing"); }
         function openFacts() { modal.style.display = "flex"; }
         function closeFacts() { modal.style.display = "none"; }
-        function openLeaderboard() { document.getElementById("lbYourScore").innerText = score; lbModal.style.display = "flex"; }
         function closeLeaderboard() { lbModal.style.display = "none"; }
+        function closeEasterEgg() { document.getElementById("easterEggModal").style.display = "none"; }
 
         // Галерея
         var currentSlide = 0;
@@ -331,42 +288,61 @@
             slides[currentSlide].classList.add("active");
         }
 
-        // ИГРОВОЙ ДВИЖОК РЫБНОГО КЛИКЕРА
-        var score = 0;
-        var hasTriggeredEasterEgg = false;
+        // ИГРОВОЙ ДВИЖОК С АВТОСОХРАНЕНИЕМ И ЖИВЫМ ТОПОМ
+        var score = parseInt(localStorage.getItem("clicker_score")) || 0;
+        var username = localStorage.getItem("clicker_username") || "";
+        var hasTriggeredEasterEgg = localStorage.getItem("clicker_egg") === "true";
 
-        // Функция навешивания клика на рыбу
+        // Проверка авторизации
+        if (username !== "") {
+            nickModal.style.display = "none";
+            updateScoreDisplay();
+        }
+
+        function saveNickname() {
+            var input = document.getElementById("nickInput").value.trim();
+            if (input === "") input = "EvaYosevna";
+            username = input;
+            localStorage.setItem("clicker_username", username);
+            nickModal.style.display = "none";
+            updateScoreDisplay();
+        }
+
+        function resetUserNickname() {
+            nickModal.style.display = "flex";
+        }
+
+        // Логика кликов и падения рыб
         function initFishClick(fish) {
             fish.addEventListener("click", function(e) {
-                // Если рыба уже падает, повторно не кликаем
                 if(fish.style.top === "110vh") return;
 
                 score += 10;
+                localStorage.setItem("clicker_score", score);
                 updateScoreDisplay();
 
-                // При первом клике автоматически вызываем Лидерборд
+                // Автоматическое открытие живого лидерборда при первом клике
                 if (score === 10) { openLeaderboard(); }
 
-                // Пасхалка на 500 очков
+                // Кастомная плашка Хенкаля ровно на 500 очках
                 if (score >= 500 && !hasTriggeredEasterEgg) {
                     hasTriggeredEasterEgg = true;
-                    alert("Системное сообщение Windows 95:\n\nСпасибо за тестирование Хенкалю!");
+                    localStorage.setItem("clicker_egg", "true");
+                    document.getElementById("easterEggModal").style.display = "flex";
                 }
 
-                // Спавним мега-пузырь из рыбы
                 spawnExtraBubble(e.clientX, e.clientY);
 
-                // Физика падения: запоминаем старый top, бросаем вниз, затем возвращаем
+                // Физика: летит вниз, а затем ОЧЕНЬ ПЛАВНО И МЕДЛЕННО возвращается обратно за 4 секунды
                 var oldTop = fish.style.top || window.getComputedStyle(fish).top;
                 fish.style.top = "110vh";
 
                 setTimeout(function() {
                     fish.style.top = oldTop;
-                }, 3500);
+                }, 4000);
             });
         }
 
-        // Запуск кликов для базовых рыб
         document.querySelectorAll(".fish").forEach(initFishClick);
 
         function updateScoreDisplay() {
@@ -375,32 +351,57 @@
             document.getElementById("scoreDisplay").innerText = strScore;
         }
 
-        // Кнопка "Покормить": добавляет новую рабочую плавающую рыбу
+        // Динамический живой лидерборд
+        function openLeaderboard() {
+            var currentName = username || "EvaYosevna";
+            var bots = [
+                { name: "IndieMaster 👑", score: 1500 },
+                { name: "РетроХакер", score: 850 },
+                { name: "WebSurfer", score: 450 },
+                { name: "Guest_95", score: 210 },
+                { name: "Noob_Clicker", score: 50 }
+            ];
+
+            // Добавляем тебя в общий список и сортируем
+            var players = [];
+            bots.forEach(function(b) { players.push(b); });
+            players.push({ name: currentName + " (Вы)", score: score, isPlayer: true });
+            
+            players.sort(function(a, b) { return b.score - a.score; });
+
+            // Перестраиваем таблицу рекордов в окне
+            for (var i = 1; i <= 5; i++) {
+                var tr = document.getElementById("trPos" + i);
+                if (tr && players[i-1]) {
+                    var crown = i === 1 ? " 👑" : "";
+                    tr.innerHTML = "<td>" + i + "</td><td style='" + (players[i-1].isPlayer ? "font-weight:bold;color:#000080;" : "") + "'>" + players[i-1].name + crown + "</td><td>" + players[i-1].score + "</td>";
+                }
+            }
+
+            lbModal.style.display = "flex";
+        }
+
+        // Кормить рыб (добавление новых)
         function spawnExtraFish() {
             var aquarium = document.getElementById("fishAquarium");
             var newFish = document.createElement("div");
             newFish.className = "fish";
-            
-            // Выбираем случайный вид рыбы
             var fishTypes = ["🐟", "🐠", "🐡", "🐙"];
             newFish.innerText = fishTypes[Math.floor(Math.random() * fishTypes.length)];
-            
-            // Случайная высота плавания и скорость
             newFish.style.top = (Math.floor(Math.random() * 70) + 15) + "%";
-            newFish.style.animationDuration = (Math.floor(Math.random() * 15) + 10) + "s";
+            newFish.style.animationDuration = (Math.floor(Math.random() * 15) + 15) + "s";
             
             aquarium.appendChild(newFish);
-            initFishClick(newFish); // Делаем новую рыбу кликабельной и падающей
+            initFishClick(newFish);
         }
 
-        // Спавн мега-пузырей
+        // Пузыри
         function spawnExtraBubble(customX, customY) {
             var bContainer = document.getElementById("bubbleContainer");
             var bubble = document.createElement("div");
             bubble.className = "bubble";
             var size = Math.floor(Math.random() * 20) + 35;
-            bubble.style.width = size + "px";
-            bubble.style.height = size + "px";
+            bubble.style.width = size + "px"; bubble.style.height = size + "px";
             
             if (customX) {
                 bubble.style.left = customX + "px";
@@ -417,5 +418,4 @@
 
 </body>
 </html>
-
-
+  
