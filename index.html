@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
     <style>
-        body { font-family: "Courier New", Courier, monospace; max-width: 700px; margin: 0 auto; padding: 20px; background-color: #3b6ea5; color: #000000; }
+        body { 
+            font-family: "Courier New", Courier, monospace; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            /* НАСТРОЙКА ФОНА: Задаем картинку плиткой и синий цвет подложки на случай долгой загрузки */
+            background-color: #3b6ea5; 
+            background-image: url("windows.gif"); 
+            background-repeat: repeat; 
+            color: #000000; 
+        }
         .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
         .profile { display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px; border: 2px inset #fff; }
@@ -13,7 +23,7 @@
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
         .feed-title { color: #fff; text-shadow: 2px 2px #000; font-size: 1.4em; text-transform: uppercase; margin-top: 30px; }
-        .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; }
+        .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
         .post-date { font-size: 0.85em; color: #555; font-weight: bold; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
         .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; }
@@ -40,15 +50,15 @@
 
     <!-- МЕТКА ДЛЯ ЛЕНТЫ -->
 
-  <div class="post">
+    <div class="post">
         <div class="post-date">12 сентября 2026 г. // Неудача</div>
         <h3>Неудачное подключение</h3>
-        <p>У меня удалось создать бота и подключить его, но он не отправляется сообщения. Может в будущем получится, но не сейчас👁️(</p>
+        <p>У меня удалось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
     </div>
 
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Планы</div>
-        <h3>Интеграция с Telegram</h3>
+        <h3>Integracja s Telegram</h3>
         <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а робот автоматически отправлял их сюда!💾</p>
     </div>
 
@@ -67,13 +77,13 @@
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Старт</div>
         <h3>Мой первый пост в IndieWeb!💾</h3>
-        <p>Today I launched this website straight from my phone. It's an amazing feeling — owning your own piece of the web without algorithms and social media ads.</p>
+        <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком интернета без алгоритмов и рекламы в социальных сетях.</p>
     </div>
 
     <div class="blink-footer">
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px #000;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
-            <a href="https://github.com/skaladjonson9-lab_blank" class="blink-btn gh">GitHub</a>
+            <a href="https://github.com/skaladjonson9-lab_blank" target="_blank" class="blink-btn gh">GitHub</a>
             <a href="t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
