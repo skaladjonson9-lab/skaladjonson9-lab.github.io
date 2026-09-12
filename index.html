@@ -31,7 +31,7 @@
             height: 70px;
             border-radius: 50%; 
             object-fit: cover;
-            background: #e0e0e0;
+            border: 2px solid #ddd;
         }
         .profile-text h1 { 
             font-size: 1.4em; 
@@ -56,7 +56,6 @@
         }
         .post-date { font-size: 0.85em; color: #777; margin-bottom: 5px; }
         .post h3 { margin: 5px 0 10px 0; color: #111; }
-        .post img { max-width: 100%; border-radius: 8px; margin-top: 10px; }
 
         /* Кнопки соцсетей в подвале */
         footer { margin-top: 40px; text-align: center; padding-top: 20px; border-top: 1px solid #ddd; }
@@ -77,13 +76,11 @@
 
     <!-- Шапка сайта -->
     <div class="profile">
-        <!-- Прямая ссылка на аватарку через специальный домен GitHub -->
-        <img class="avatar" src="https://weserv.nl" alt="Аватар">
-
-
+        <!-- Ссылка через официальный прокси картинок GitHub -->
+        <img class="avatar" src="https://githubusercontent.com" alt="Аватар">
         <div class="profile-text">
-            <h1>Привет, я EvaYosevna! 👋 Так меня многие знают в интернете</h1>
-            <p>Добро пожаловать в мой независимый уголок интернета.</p>
+            <h1>Привет, я EvaYosevna! 👋</h1>
+            <p>Так меня многие знают в интернете. Добро пожаловать в мой независимый уголок интернета.</p>
         </div>
     </div>
 
@@ -94,8 +91,6 @@
         <div class="post-date">12 сентября 2026 г.</div>
         <h3>Мои увлечения</h3>
         <p>Здесь будут мои заметки, мысли и интересные находки.</p>
-        <!-- Ваша картинка с монетами останется на месте -->
-        <img src="https://discordapp.net" alt="Монеты" style="display:none;">
     </div>
 
     <div class="post">
@@ -108,12 +103,11 @@
     <footer>
         <p>Найти меня в сети:</p>
         <div class="social-links">
-            <!-- Замените знаки # на реальные ссылки на ваши профили, если хотите -->
-            <a href="https://github.com" class="btn" style="background: #24292e;">GitHub</a>
-            <a href="#" class="btn" style="https://t.me/EvaYosevna: #0088cc;">Telegram</a>
-            <a href="#" class="btn" 
+            <a href="https://github.com" target="_blank" class="btn" style="background: #24292e;">GitHub</a>
+            <!-- ВПИШИТЕ ВАШ НИК В ТЕЛЕГРАМ ВМЕСТО СЛОВА ВАШ_НИК НИЖЕ -->
+            <a href="https://t.me/EvaYosevna" target="_blank" class="btn" style="background: #0088cc;">Telegram</a>
+        </div>
     </footer>
 
 </body>
 </html>
-
