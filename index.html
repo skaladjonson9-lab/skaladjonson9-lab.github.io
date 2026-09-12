@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -105,10 +105,12 @@
         /* Изначальные стили Windows 95 */
         .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; position: relative; z-index: 2; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
-        .profile { display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px; border: 2px inset #fff; }
+        
+        /* СДЕЛАЛИ ТЕМНЕЕ: Внутренний фон анкеты теперь матовый светло-серый #e8e7e3 */
+        .profile { display: flex; align-items: center; gap: 20px; background: #e8e7e3; padding: 15px; border: 2px inset #fff; }
         .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; color: #000; }
-        .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
+        .profile-text p { margin: 0; font-size: 0.9em; color: #222; }
         
         /* СИСТЕМНАЯ КНОПКА ФАКТОВ */
         .facts-toggle-btn { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 6px 12px; font-size: 0.85em; font-weight: bold; font-family: sans-serif; cursor: pointer; margin-top: 15px; box-shadow: 2px 2px 0px rgba(0,0,0,0.4); display: inline-block; user-select: none; }
@@ -117,7 +119,9 @@
         /* МОДАЛЬНОЕ ОКНО ФАКТОВ */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box; }
         .modal-window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; width: 100%; max-width: 550px; box-shadow: 10px 10px 0px rgba(0,0,0,0.4); z-index: 1000; box-sizing: border-box; }
-        .modal-body { background: #fff; border: 2px inset #fff; margin: 15px; padding: 15px; height: 350px; overflow-y: scroll; font-size: 0.9em; line-height: 1.5; color: #000; }
+        
+        /* Внутреннее поле модалки тоже сделали мягким серым */
+        .modal-body { background: #e8e7e3; border: 2px inset #fff; margin: 15px; padding: 15px; height: 350px; overflow-y: scroll; font-size: 0.9em; line-height: 1.5; color: #000; }
         .modal-body ul { padding-left: 20px; margin-top: 5px; }
         .modal-body li { margin-bottom: 12px; }
 
@@ -135,13 +139,14 @@
             z-index: 2;
         }
         
-        .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); position: relative; z-index: 2; }
-        .post-date { font-size: 0.85em; color: #555; font-weight: bold; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px; }
+        /* СДЕЛАЛИ ТЕМНЕЕ: Карточки всех постов теперь матовые светло-серые #e8e7e3 вместо белых */
+        .post { background: #e8e7e3; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); position: relative; z-index: 2; }
+        .post-date { font-size: 0.85em; color: #444; font-weight: bold; border-bottom: 1px dashed #bbb; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
         
         .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; position: relative; z-index: 2; }
         .blink-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-        .blink-btn { inline-block; width: 100px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; font-family: sans-serif; }
+        .blink-btn { display: inline-block; width: 100px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; font-family: sans-serif; }
         .blink-btn.tg { background: #0088cc; }
         .blink-btn.gh { background: #24292e; }
     </style>
@@ -176,7 +181,7 @@
                 <hr>
                 <ul>
                     <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов, Geocities и раннего LiveJournal. Люди обменивались ссылками напрямую через веб-ринги и пиксельные баннеры-блинки, формируя независимые сообщества без алгоритмов.</li>
-                    <li><strong>2010-е // Корпоративный захват:</strong> Появление гигантов вроде Facebook, Instagram и Twitter. Интернет централизуется. Алгоритмические ленты начинают диктовать правила, а уникальный ретро-дизайн страниц сменяется безликими однотипными профилями.</li>
+                    <li><strong>2010-е // Corporate centralisation:</strong> Появление гигантов вроде Facebook, Instagram и Twitter. Интернет централизуется. Алгоритмические ленты начинают диктовать правила, а уникальный ретро-дизайн страниц сменяется безликими однотипными профилями.</li>
                     <li><strong>2014 г. // Рождение движения IndieWeb:</strong> Группа энтузиастов создаёт официальное движение за возвращение контроля над своими данными. Появляются технологии Webmention и Microformats для связи независимых сайтов между собой.</li>
                     <li><strong>2020-е // Эпоха ренессанса и Webcore:</strong> Зумеры и миллениалы, уставшие от цензуры, рекламы и душных соцсетей, начинают массово возвращаться к истокам. Возрождается эстетика старого интернета (Windows 95, Y2K, Frutiger Aero).</li>
                     <li><strong>2026 г. // Настоящее время:</strong> Персональный сайт становится главным цифровым манифестом свободы. Веб-мастера со всего мира доказывают, что владеть собственным кусочком сети, собирая его вручную прямо со смартфона, — это высшая форма цифрового самовыражения.</li>
@@ -215,7 +220,7 @@
                         <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
                         <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
                     </div>
-                    <!-- Прямой запуск твоего скачанного m4a-файла -->
+                    <!-- Твой аудиофайл -->
                     <audio id="myAudio" src="p3b3 - The Scooby Snacks.m4a" loop></audio>
                 </div>
                 
@@ -225,48 +230,48 @@
 
     <div class="feed-title">💾 Мой Борт-Журнал</div>
 
-    <!-- ТВОЙ НОВЫЙ ПОСТ -->
+    <!-- ПОСТ С МОСКОВСКИМ ВРЕМЕНЕМ -->
     <div class="post">
-        <div class="post-date">13 сентября 2026 г. // 01:35 IRKT // Эволюция</div>
+        <div class="post-date">12 сентября 2026 г. // 20:35 MSK // Эволюция</div>
         <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
-        <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Иркутское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
+        <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
     </div>
 
     <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 23:45 IRKT // Неудача</div>
+        <div class="post-date">12 сентября 2026 г. // 18:45 MSK // Неудача</div>
         <h3>Неудачное подключение</h3>
         <p>У меня получилось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
     </div>
 
     <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 22:15 IRKT // Планы</div>
+        <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
         <h3>Интеграция с Telegram</h3>
         <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а робот автоматически отправлял их сюда!💾</p>
     </div>
 
     <div class="post">
-        <div class="post-date">12Box сентября 2026 г. // 21:30 IRKT // Стрим</div>
+        <div class="post-date">12 сентября 2026 г. // 16:30 MSK // Стрим</div>
         <h3>Эстетика Webcore и Ретро-инди</h3>
         <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
     </div>
 
     <div class="post">
-        <div class="post-date">12Box сентября 2026 г. // 20:45 IRKT // Хобби</div>
+        <div class="post-date">12Box сентября 2026 г. // 15:45 MSK // Хобби</div>
         <h3>Мои заметки</h3>
         <p>Здесь будут мои заметки, мысли и интересные находки.💻</p>
     </div>
 
     <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 19:00 IRKT // Старт</div>
+        <div class="post-date">12 сентября 2026 г. // 14:00 MSK // Старт</div>
         <h3>Мой первый пост в IndieWeb!💾</h3>
         <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
     </div>
 
-    <!-- ПОДВАЛ С ТВОИМИ ИСПРАВЛЕННЫМИ ССЫЛКАМИ -->
+    <!-- ПОДВАЛ -->
     <div class="blink-footer">
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
-            <a href="https://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
+            <a href="https://github.com" target="_blank" class="blink-btn gh">GitHub</a>
             <a href="https://t.me" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
@@ -277,10 +282,9 @@
         var statusText = document.getElementById("trackStatus");
         var modal = document.getElementById("factsModal");
 
-        // Логика плеера
         function playMusic() {
             audio.play().catch(function(error) {
-                console.log("Плеер ожидает ручного клика.");
+                console.log("Плеер ожидает клика.");
             });
             container.classList.add("playing");
             statusText.innerText = "▶ p3b3 - The Scooby Snacks";
@@ -293,10 +297,11 @@
             statusText.innerText = "■ p3b3 - The Scooby Snacks";
         }
 
-        // Логика системного окна фактов
         function openFacts() { modal.style.display = "flex"; }
         function closeFacts() { modal.style.display = "none"; }
     </script>
 
 </body>
 </html>
+
+   
