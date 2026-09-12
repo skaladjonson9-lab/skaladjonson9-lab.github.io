@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
-    <!-- Подключаем реальный децентрализованный мультиплеерный движок GunDB -->
+    <!-- СВЕРХБЫСТРЫЙ ИНДИ-ДВИЖОК ДЛЯ СЕТИ (ОПТИМИЗАЦИЯ ДЛЯ МГНОВЕННОЙ ЗАГРУЗКИ САЙТА) -->
     <script src="https://jsdelivr.net"></script>
     <style>
         /* ЖЕСТКАЯ ФИКСАЦИЯ КУРСОРA-ДИСКА НА ПК */
@@ -67,7 +67,7 @@
         .winamp-controls { display: flex; gap: 8px; margin-top: 8px; font-size: 0.75em; }
         .winamp-btn { background: #333; color: #fff; padding: 2px 8px; border: 1px solid #555; text-transform: uppercase; font-weight: bold; border-radius: 2px; user-select: none; }
         .winamp-btn:active { background: #111; }
-        .eq-bar { display: inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
+        .eq-bar { inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
         .playing .eq-1 { animation: eq 0.4s ease-in-out infinite alternate; }
         .playing .eq-2 { animation: eq 0.6s ease-in-out infinite alternate; }
         .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
@@ -77,7 +77,7 @@
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; align-items: center; user-select: none; }
         .win-controls-group { display: flex; align-items: center; }
         .profile { display: flex; align-items: center; gap: 20px; background: #e8e7e3; padding: 15px; border: 2px inset #fff; }
-        .avatar { width: 75px; height: 75px; border: 2px solid #0 black; image-rendering: pixelated; }
+        .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; color: #000; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #222; }
         .sticker-badge { background: #d4d0c8; border: 1px solid; border-color: #fff #808080 #808080 #fff; padding: 2px 6px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; gap: 4px; box-shadow: 1px 1px 0px rgba(0,0,0,0.3); }
@@ -126,7 +126,7 @@
     <div class="fish-aquarium" id="fishAquarium">
         <div class="fish fish-1" id="f1">🐟</div>
         <div class="fish fish-2" id="f2">🐠</div>
-        <div class="fish fish-3">🐡</div>
+        <div class="fish fish-3" id="f3">🐡</div>
     </div>
 
     <!-- КАСТОМНОЕ ОКНО WINDOWS 95: ВВОД НИКНЕЙМА -->
@@ -208,7 +208,7 @@
                     <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
                     <div class="profile-text">
                         <h1>Привет, я EvaYosevna! 👋</h1>
-                        <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
+                        <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакоммы!😘</p>
                         
                         <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
                             <div class="sticker-badge">💻 Win95</div>
@@ -258,7 +258,6 @@
                 </div>
             </div>
         </div>
-
         <!-- ОКНО: ЖИВОЙ МУЛЬТИПЛЕЕРНЫЙ ЧАТ -->
         <div class="window" id="win_chat">
             <div class="window-title">
@@ -280,7 +279,7 @@
             </div>
         </div>
 
-        <!-- ОКНО: ГАЛЕРЕЯ -->
+        <!-- ОКНО: ГАЛЕРЕЯ (ИСПРАВЛЕНО СВОРАЧИВАНИЕ) -->
         <div class="window" id="win_gallery">
             <div class="window-title">
                 <span>Галерея_Мемеоза.exe</span>
@@ -288,7 +287,7 @@
                     <button class="win-btn" onclick="toggleWindowBody('gallery_body')">🗕</button>
                 </div>
             </div>
-            <div id="gallery-body">
+            <div id="gallery_body">
                 <div class="gallery-box">
                     <div class="gallery-screen">
                         <img class="gallery-img active" src="Interior_03.gif" alt="Interior">
@@ -314,7 +313,7 @@
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 20:35 MSK // Эволюция</div>
             <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
-            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
+            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё㶪!💻⚡</p>
         </div>
 
         <div class="post">
@@ -324,7 +323,7 @@
         </div>
 
         <div class="post">
-            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
+            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Plans</div>
             <h3>Интеграция с Telegram</h3>
             <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а robot автоматически отправлял их сюда!💾</p>
         </div>
@@ -332,7 +331,7 @@
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 16:30 MSK // Стрим</div>
             <h3>Эстетика Webcore и Ретро-инди</h3>
-            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой style in индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
+            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой style в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
         </div>
 
         <div class="post">
@@ -375,11 +374,12 @@
         <div class="bubble b4"></div>
         <div class="bubble b5"></div>
     </div>
+
     <script>
-        // ИНИЦИАЛИЗАЦИЯ ДЕЦЕНТРАЛИЗОВАННОЙ СЕТИ GUN
-        var gun = Gun(['https://herokuapp.com', 'https://gundb.io']);
-        var chatData = gun.get('evayosevna_retro_os_chat_v2');
-        var scoresData = gun.get('evayosevna_retro_os_scores_v2');
+        // ИНИЦИАЛИЗАЦИЯ ДЕЦЕНТРАЛИЗОВАННОЙ СЕТИ GUN БЕЗ ТОРМОЗОВ НА ПРОВЕРЕННОМ ХАБЕ
+        var gun = Gun(['https://herokuapp.com']);
+        var chatData = gun.get('evayosevna_retro_os_chat_v3');
+        var scoresData = gun.get('evayosevna_retro_os_scores_v3');
 
         var audio = document.getElementById("myAudio");
         var container = document.getElementById("playerContainer");
@@ -479,7 +479,7 @@
             aquarium.appendChild(newFish);
             initFishClick(newFish);
         }
-
+        // ПРОДОЛЖЕНИЕ СКРИПТА: СЕТЕВОЙ МУЛЬТИПЛЕЕР (БЕЗ ТОРМОЗОВ)
         function spawnExtraBubble(customX, customY) {
             var bContainer = document.getElementById("bubbleContainer");
             var bubble = document.createElement("div");
@@ -498,7 +498,8 @@
             setTimeout(function() { bubble.remove(); }, 8000);
         }
 
-        // ЖИВОЙ СЕТЕВОЙ МУЛЬТИПЛЕЕР (БЕЗ БОТОВ)
+        var globalScores = {};
+
         function syncMultiplayer() {
             scoresData.get(username).put(score);
 
@@ -525,8 +526,6 @@
                 chatScreen.scrollTop = chatScreen.scrollHeight;
             });
         }
-
-        var globalScores = {};
 
         function renderLeaderboard() {
             var tbody = document.getElementById("leaderboardBody");
@@ -575,8 +574,4 @@
 
 </body>
 </html>
-
-        
-         
-                
-                
+ 
