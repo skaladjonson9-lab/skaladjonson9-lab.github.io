@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
     <style>
-      body { 
-    font-family: "Courier New", Courier, monospace; 
-    max-width: 700px; 
-    margin: 0 auto; 
-    padding: 20px; 
-    background-color: #3b6ea5; /* Синий фон вокруг */
-    background-image: url("windows.gif"); 
-    background-repeat: no-repeat; /* Запрещаем размножение */
-    background-position: center 100px; /* Ставим по центру чуть ниже шапки */
-    background-attachment: fixed; /* Картинка будет красиво стоять на месте при скролле */
-    color: #000000; 
-
+        body { 
+            font-family: "Courier New", Courier, monospace; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #3b6ea5; 
+            
+            /* РАСТЯГИВАЕМ КАРТИНКУ НА ВЕСЬ ЭКРАН */
+            background-image: url("windows.gif"); 
+            background-repeat: no-repeat; 
+            background-size: cover;          /* Картинка заполнит весь экран */
+            background-position: center;     /* Центрируем её */
+            background-attachment: fixed;    /* Фон застынет на месте при прокрутке */
+            image-rendering: pixelated;      /* Сохраняем чёткие ретро-пиксели при увеличении */
+            
+            color: #000000; 
         }
         .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
@@ -24,7 +28,20 @@
         .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
-        .feed-title { color: #fff; text-shadow: 2px 2px #000; font-size: 1.4em; text-transform: uppercase; margin-top: 30px; }
+        
+        /* Добавили синюю плашку-подложку, чтобы заголовок идеально читался на любом фоне */
+        .feed-title { 
+            color: #fff; 
+            background: #000080; 
+            padding: 6px 10px; 
+            border: 2px inset #fff; 
+            display: inline-block; 
+            margin-top: 30px; 
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+        }
+        
         .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
         .post-date { font-size: 0.85em; color: #555; font-weight: bold; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
@@ -63,7 +80,7 @@
     </div>
 
     <div class="post">
-        <div class="post-date">12 сентября 2026 г. // Стрим</div>
+        <div class="post-date">12Box сентября 2026 г. // Стрим</div>
         <h3>Эстетика Webcore и Ретро-инди</h3>
         <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
     </div>
@@ -83,10 +100,11 @@
     <div class="blink-footer">
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px #000;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
-            <a href="https://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
+            <a href="hhttps://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
             <a href="https://t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
 
 </body>
 </html>
+
