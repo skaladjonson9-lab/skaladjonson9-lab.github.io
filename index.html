@@ -10,8 +10,9 @@
             max-width: 700px; 
             margin: 0 auto; 
             padding: 20px; 
+            background-color: #3b6ea5; 
             
-            /* ЭФФЕКТ ЗАТЕМНЕНИЯ: Накладываем тёмный слой поверх картинки */
+            /* Твои изначальные обои с затемнением */
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                         url("windows.gif") #3b6ea5; 
             background-repeat: no-repeat; 
@@ -21,8 +22,56 @@
             image-rendering: pixelated;      
             
             color: #000000; 
+            overflow-x: hidden; /* Чтобы рыбки не растягивали экран при уплывании */
+            position: relative;
         }
-        .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; }
+
+        /* -------------------------------------------------- */
+        /*  МАГИЯ АКВАРИУМА: АНИМАЦИЯ ПЛАВАЮЩИХ РЫБОК          */
+        /* -------------------------------------------------- */
+        .fish-aquarium {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Чтобы рыбок нельзя было случайно кликнуть */
+            z-index: -1; /* Рыбки плавают НАД фоном, но ПОД окнами с текстом */
+        }
+
+        .fish {
+            position: absolute;
+            font-size: 40px; /* Размер пиксельных рыбок */
+            animation: swim linear infinite;
+        }
+
+        .fish-1 {
+            top: 20%;
+            animation-duration: 18s; /* Скорость плавания */
+            animation-delay: 0s;
+        }
+
+        .fish-2 {
+            top: 50%;
+            font-size: 32px;
+            animation-duration: 25s;
+            animation-delay: -5s;
+        }
+
+        .fish-3 {
+            top: 80%;
+            font-size: 24px;
+            animation-duration: 14s;
+            animation-delay: -2s;
+        }
+
+        @keyframes swim {
+            0% { left: -100px; transform: scaleX(1); }
+            100% { left: calc(100% + 100px); transform: scaleX(1); }
+        }
+        /* -------------------------------------------------- */
+
+        .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; position: relative; z-index: 2; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
         .profile { display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px; border: 2px inset #fff; }
         .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
@@ -39,13 +88,15 @@
             margin-bottom: 10px;
             font-size: 1.4em;
             text-transform: uppercase;
+            position: relative;
+            z-index: 2;
         }
         
-        .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
+        .post { background: #ffffff; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); position: relative; z-index: 2; }
         .post-date { font-size: 0.85em; color: #555; font-weight: bold; border-bottom: 1px dashed #ccc; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
         
-        .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; }
+        .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; position: relative; z-index: 2; }
         .blink-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
         .blink-btn { display: inline-block; width: 100px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; font-family: sans-serif; }
         .blink-btn.tg { background: #0088cc; }
@@ -54,13 +105,21 @@
 </head>
 <body>
 
+    <!-- СЛОЙ С ПЛАВАЮЩИМИ РЫБКАМИ -->
+    <div class="fish-aquarium">
+        <div class="fish fish-1">🐟</div>
+        <div class="fish fish-2">🐠</div>
+        <div class="fish fish-3">🐡</div>
+    </div>
+
+    <!-- Главное окно сайта -->
     <div class="window">
         <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
         <div class="profile">
             <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
             <div class="profile-text">
                 <h1>Привет, я EvaYosevna! 👋</h1>
-                <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
+                <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакоммы!😘</p>
             </div>
         </div>
     </div>
@@ -93,7 +152,7 @@
 
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Старт</div>
-        <h3>Мой первый post в IndieWeb!💾</h3>
+        <h3>Мой первый пост в IndieWeb!💾</h3>
         <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
     </div>
 
@@ -107,5 +166,6 @@
 
 </body>
 </html>
+
 
 
