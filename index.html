@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -15,9 +15,8 @@
 
         body { 
             font-family: "Courier New", Courier, monospace; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            padding: 20px; 
+            margin: 0;
+            padding: 0;
             background-color: #3b6ea5; 
             
             /* Тёмная вуаль 40% и твоя гифка windows.gif */
@@ -31,7 +30,16 @@
             
             color: #000000; 
             overflow-x: hidden; 
+        }
+
+        /* ГЛАВНЫЙ КОНТЕЙНЕР ДЛЯ ВСЕХ ОКОН: Фиксирует контент поверх фона */
+        .main-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
             position: relative;
+            z-index: 10; /* Поднимает текст над фоном */
+            box-sizing: border-box;
         }
 
         /* МАГИЯ АКВАРИУМА: АНИМАЦИЯ ПЛАВАЮЩИХ РЫБОК */
@@ -42,7 +50,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none; 
-            z-index: -1; 
+            z-index: 1; /* Между фоном и текстом */
         }
         .fish { position: absolute; font-size: 55px; animation: swim linear infinite; }
         .fish-1 { top: 25%; animation-duration: 18s; animation-delay: 0s; }
@@ -61,7 +69,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
         .bubble {
             position: absolute;
@@ -106,8 +114,8 @@
         .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
         @keyframes eq { 0% { height: 2px; } 100% { height: 14px; } }
 
-        /* style для окон */
-        .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; position: relative; z-index: 2; }
+        /* Изначальные стили Windows 95 */
+        .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
         .profile { display: flex; align-items: center; gap: 20px; background: #e8e7e3; padding: 15px; border: 2px inset #fff; }
         .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
@@ -118,7 +126,7 @@
         .facts-toggle-btn { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 6px 12px; font-size: 0.85em; font-weight: bold; font-family: sans-serif; margin-top: 15px; box-shadow: 2px 2px 0px rgba(0,0,0,0.4); display: inline-block; user-select: none; }
         .facts-toggle-btn:active { border-color: #808080 #fff #fff #808080; padding: 7px 11px 5px 13px; box-shadow: none; }
 
-        /* СТИЛИ ГАЛЕРЕИ */
+        /* СТИЛИ СИСТЕМНОЙ ГАЛЕРЕИ КАРТИНОК */
         .gallery-box { background: #e8e7e3; border: 2px inset #fff; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 5px; }
         .gallery-screen { width: 100%; max-width: 400px; height: 250px; background: #000; border: 2px inset #fff; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; }
         .gallery-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
@@ -143,18 +151,15 @@
             margin-bottom: 10px;
             font-size: 1.4em;
             text-transform: uppercase;
-            position: relative;
-            z-index: 2;
         }
         
-        .post { background: #e8e7e3; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); position: relative; z-index: 2; }
+        .post { background: #e8e7e3; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
         .post-date { font-size: 0.85em; color: #444; font-weight: bold; border-bottom: 1px dashed #bbb; padding-bottom: 5px; margin-bottom: 10px; }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
         
-        .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; position: relative; z-index: 2; }
+        /* ПОДВАЛ И ВЕБ-РИНГ */
+        .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; }
         .webring-panel { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; max-width: 450px; margin: 20px auto 0 auto; padding: 10px; box-shadow: 3px 3px 0px rgba(0,0,0,0.3); font-size: 0.85em; }
-        .webring-title { font-weight: bold; color: #000080; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .webring-controls { display: flex; justify-content: center; gap: 10px; align-items: center; margin-top: 8px; }
 <body>
 
     <!-- СЛОЙ С РЫБКАМИ -->
@@ -184,7 +189,7 @@
                 <h3 style="margin-top:0; color:#000080;">Хроники Свободного Интернета (1990 — 2026)</h3>
                 <hr>
                 <ul>
-                    <li><strong>1991-1994 гг. // Создание WWW и W3C:</strong> Тим Бернерс-Ли запускает первый в мире веб-сайт и основывает Консорциум Всемирной паутины (W3C). Интернет задумавался как абсолютно децентрализованная сеть, где каждый компьютер — это одновременно и сервер, и личная страница.</li>
+                    <li><strong>1991-1994 гг. // Создание WWW и W3C:</strong> Тим Бернерс-Ли запускает первый в мире веб-сайт и основывает Консорциум Всемирной паутины (W3C). Интернет задумывался как абсолютно децентрализованная сеть, где каждый компьютер — это одновременно и сервер, и личная страница.</li>
                     <li><strong>1994 г. // Запуск GeoCities:</strong> Появление легендарного хостинга, который подарил миллионам людей возможность бесплатно создавать домашние страницы (Homepages). Веб заполняется пиксельной графикой, яркими фонами и личными дневниками.</li>
                     <li><strong>1996 г. // Появление стандарта CSS:</strong> Внедрение каскадных таблиц стилей (CSS) совершает революцию в дизайне. Пользователи получают полную свободу кастомизации своих страниц, создавая уникальные ретро-интерфейсы.</li>
                     <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов и раннего LiveJournal. Люди обменивались ссылками напрямую через веб-ринги (Webrings) и пиксельные баннеры-блинки, формируя независимые сообщества без алгоритмов.</li>
@@ -200,116 +205,110 @@
         </div>
     </div>
 
-    <!-- Главное окно сайта -->
-    <div class="window">
-        <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
-        <div class="profile">
-            <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
-            <div class="profile-text">
-                <h1>Привет, я EvaYosevna! 👋</h1>
-                <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
-                
-                <!-- НАДЕЖНЫЕ СИСТЕМНЫЕ БАДЖИ -->
-                <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
-                    <div class="sticker-badge">💻 Win95</div>
-                    <div class="sticker-badge">💾 Save</div>
-                    <div class="sticker-badge">🌐 IE</div>
-                </div>
+    <!-- ГЛАВНАЯ ОБЁРТКА КОНТЕНТА: ПОДНИМАЕТ ОКНА НАД ФОНОМ -->
+    <div class="main-content">
 
-                <!-- КНОПКА ДЛЯ ОТКРЫТИЯ ФАКТОВ -->
-                <div class="facts-toggle-btn" onclick="openFacts()">💾 Хроники IndieWeb (1990-2026)</div>
+        <!-- Главное окно сайта -->
+        <div class="window">
+            <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
+            <div class="profile">
+                <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
+                <div class="profile-text">
+                    <h1>Привет, я EvaYosevna! 👋</h1>
+                    <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
+                    
+                    <!-- НАДЕЖНЫЕ СИСТЕМНЫЕ БАДЖИ -->
+                    <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
+                        <div class="sticker-badge">💻 Win95</div>
+                        <div class="sticker-badge">💾 Save</div>
+                        <div class="sticker-badge">🌐 IE</div>
+                    </div>
 
-                <!-- НАСТОЯЩИЙ ЖИВОЙ ПЛЕЕР -->
-                <div class="winamp-player" id="playerContainer">
-                    <div class="winamp-title">♫ Winamp Audio Player</div>
-                    <div class="winamp-display">
-                        <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
-                        <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
-                            <div class="eq-bar eq-1"></div>
-                            <div class="eq-bar eq-2"></div>
-                            <div class="eq-bar eq-3"></div>
+                    <!-- КНОПКА ДЛЯ ОТКРЫТИЯ ФАКТОВ -->
+                    <div class="facts-toggle-btn" onclick="openFacts()">💾 Хроники IndieWeb (1990-2026)</div>
+
+                    <!-- НАСТОЯЩИЙ ЖИВОЙ ПЛЕЕР -->
+                    <div class="winamp-player" id="playerContainer">
+                        <div class="winamp-title">♫ Winamp Audio Player</div>
+                        <div class="winamp-display">
+                            <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
+                            <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
+                                <div class="eq-bar eq-1"></div>
+                                <div class="eq-bar eq-2"></div>
+                                <div class="eq-bar eq-3"></div>
+                            </div>
                         </div>
+                        <div class="winamp-controls">
+                            <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
+                            <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
+                        </div>
+                        <audio id="myAudio" src="p3b3 - The Scooby Snacks.m4a" loop></audio>
                     </div>
-                    <div class="winamp-controls">
-                        <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
-                        <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
-                    </div>
-                    <!-- Локальный аудиофайл -->
-                    <audio id="myAudio" src="p3b3 - The Scooby Snacks.m4a" loop></audio>
+                    
                 </div>
-                
             </div>
         </div>
-    </div>
 
-    <!-- ОКНО: СИСТЕМНАЯ ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
-    <div class="window">
-        <div class="window-title"><span>Галерея_Мемеоза.exe</span><span>🗙</span></div>
-        <div class="gallery-box">
-            <div class="gallery-screen">
-                <!-- Твои загруженные файлы картинок -->
-                <img class="gallery-img active" src="Interior_03.gif" alt="Interior">
-                <img class="gallery-img" src="screenwindowsvhs.gif" alt="VHS Screen">
-                <img class="gallery-img" src="images (16).jpeg" alt="Image 16">
-            </div>
-            <div class="gallery-controls">
-                <button class="gallery-btn" onclick="changeSlide(-1)">◀ Назад</button>
-                <button class="gallery-btn" onclick="changeSlide(1)">Вперед ▶</button>
+        <!-- ОКНО: СИСТЕМНАЯ ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
+        <div class="window">
+            <div class="window-title"><span>Галерея_Мемеоза.exe</span><span>🗙</span></div>
+            <div class="gallery-box">
+                <div class="gallery-screen">
+                    <img class="gallery-img active" src="Interior_03.gif" alt="Interior">
+                    <img class="gallery-img" src="screenwindowsvhs.gif" alt="VHS Screen">
+                    <img class="gallery-img" src="images (16).jpeg" alt="Image 16">
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="changeSlide(-1)">◀ Назад</button>
+                    <button class="gallery-btn" onclick="changeSlide(1)">Вперед ▶</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="feed-title">💾 Мой Борт-Журнал</div>
+        <div class="feed-title">💾 Мой Борт-Журнал</div>
 
-    <!-- ТВОЙ НОВЫЙ СВЕЖИЙ ПОСТ -->
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
-        <h3>Интеграция галереи артов и кастомного курсора</h3>
-        <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил кастомный движок курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи, куда собрал крутейшие арты Interior_03, screenwindowsvhs и другие медиафайлы. Всё работает автономно и плавно!💾💿👾</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12Box сентября 2026 г. // 20:35 MSK // Эволюция</div>
-        <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
-        <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 18:45 MSK // Неудача</div>
-        <h3>Неудачное подключение</h3>
-        <p>У меня получилось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
-        <h3>Интеграция с Telegram</h3>
-        <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а robot автоматически отправлял их сюда!💾</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 16:30 MSK // Стрим</div>
-        <h3>Эстетика Webcore и Ретро-инди</h3>
-        <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 15:45 MSK // Хобби</div>
-        <h3>Мои заметки</h3>
-        <p>Здесь будут мои заметки, мысли и интересные находки.💻</p>
-    </div>
-
-    <div class="post">
-        <div class="post-date">12 сентября 2026 г. // 14:00 MSK // Старт</div>
-        <h3>Мой первый пост в IndieWeb!💾</h3>
-        <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
-    </div>
-
-    <!-- ПОДВАЛ, ТВОИ БЛИНКИ И ВЕБ-РИНГ С ЧИСТЫМИ ССЫЛКАМИ -->
-    <div class="blink-footer">
-        <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
-        <div class="blink-buttons">
-            <a href="https://github.com" target="_blank" class="blink-btn gh">GitHub</a>
-            <a href="https://t.me" target="_blank" class="blink-btn tg">Telegram</a>
+        <!-- ПОСТЫ -->
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
+            <h3>Интеграция галереи артов и кастомного курсора</h3>
+            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил кастомный движок курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи, куда собрал крутейшие арты Interior_03, screenwindowsvhs и другие медиафайлы. Всё работает автономно и плавно!💾💿👾</p>
         </div>
 
-        <!-- КАНАЛ ВЕБ-РИНГА С ЧИСТЫМИ АДРЕСАМИ -->
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 20:35 MSK // Эволюция</div>
+            <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
+            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 18:45 MSK // Неудача</div>
+            <h3>Неудачное подключение</h3>
+            <p>У меня получилось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
+            <h3>Интеграция с Telegram</h3>
+            <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а robot автоматически отправлял их сюда!💾</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12Box сентября 2026 г. // 16:30 MSK // Стрим</div>
+            <h3>Эстетика Webcore и Ретро-инди</h3>
+            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 15:45 MSK // Хобби</div>
+            <h3>Мои заметки</h3>
+            <p>Здесь будут мои заметки, мысли и интересные находки.💻</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 14:00 MSK // Старт</div>
+            <h3>Мой первый пост в IndieWeb!💾</h3>
+            <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
+        </div>
+
+        <!-- ПОДВАЛ, ТВОИ БЛИНКИ И ВЕБ-РИНГ С ЧИСТЫМИ ССЫЛКАМИ -->
+        <div class="blink-footer">
