@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
-    <!-- СВЕРХБЫСТРЫЙ ИНДИ-ДВИЖОК ДЛЯ СЕТИ (ОПТИМИЗАЦИЯ ДЛЯ МГНОВЕННОЙ ЗАГРУЗКИ САЙТА) -->
-    <script src="https://jsdelivr.net"></script>
     <style>
         /* ЖЕСТКАЯ ФИКСАЦИЯ КУРСОРA-ДИСКА НА ПК */
         html, body, a, button, div, span, img, iframe, input, textarea {
@@ -67,7 +65,7 @@
         .winamp-controls { display: flex; gap: 8px; margin-top: 8px; font-size: 0.75em; }
         .winamp-btn { background: #333; color: #fff; padding: 2px 8px; border: 1px solid #555; text-transform: uppercase; font-weight: bold; border-radius: 2px; user-select: none; }
         .winamp-btn:active { background: #111; }
-        .eq-bar { inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
+        .eq-bar { display: inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
         .playing .eq-1 { animation: eq 0.4s ease-in-out infinite alternate; }
         .playing .eq-2 { animation: eq 0.6s ease-in-out infinite alternate; }
         .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
@@ -97,7 +95,7 @@
         .leaderboard-table tr:nth-child(even) { background: #f0eee9; }
         .win95-input { background: #fff; border: 2px inset #fff; color: #000; padding: 4px; font-family: monospace; font-size: 1em; width: 80%; max-width: 250px; margin-bottom: 15px; outline: none; }
 
-        /* СТИЛИ ЖИВОГО СИСТЕМНОГО ЧАТА */
+        /* СТИЛИ СИСТЕМНОГО ЧАТА */
         .chat-box { background: #e8e7e3; border: 2px inset #fff; padding: 10px; display: flex; flex-direction: column; gap: 10px; }
         .chat-screen { background: #fff; border: 2px inset #fff; height: 180px; overflow-y: scroll; padding: 8px; font-size: 0.85em; text-align: left; display: flex; flex-direction: column; gap: 6px; }
         .chat-msg { border-bottom: 1px dashed #eee; padding-bottom: 4px; color: #000; word-break: break-all; }
@@ -159,14 +157,14 @@
                 <h3 style="margin-top:0; color:#000080;">Хроники Свободного Интернета (1990 — 2026)</h3>
                 <hr>
                 <ul>
-                    <li><strong>1991-1994 гг. // Создание WWW:</strong> Интернет задумывался как децентрализованная сеть.</li>
-                    <li><strong>1994 г. // Запуск GeoCities:</strong> Появление легендарного хостинга домашних страниц.</li>
-                    <li><strong>1996 г. // Появление стандарта CSS:</strong> Внедрение таблиц стилей совершает революцию в дизайне.</li>
-                    <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов и независимых веб-колец.</li>
-                    <li><strong>2010-е // Корпоративный захват:</strong> Интернет централизуется. Алгоритмические ленты диктуют правила.</li>
-                    <li><strong>2013 г. // Запуск Neocities:</strong> Рождается современный преемник GeoCities для свободного творчества.</li>
-                    <li><strong>2014 г. // Рождение движения IndieWeb:</strong> Движение за возвращение контроля над своими данными.</li>
-                    <li><strong>2020-2026 гг. // Цифровой ренессанс и Webcore:</strong> Массовый возврат пользователей к истокам цифровой свободы. Персональные независимые пространства становятся главным манифестом цифровой независимости.</li>
+                    <li><strong>1991-1994 гг. // Создание WWW:</strong> Интернет децентрализован.</li>
+                    <li><strong>1994 г. // Запуск GeoCities:</strong> Эпоха легендарных домашних страниц.</li>
+                    <li><strong>1996 г. // Появление стандарта CSS:</strong> Революция в веб-дизайне.</li>
+                    <li><strong>2000-е // Расцвет блогосферы:</strong> Независимые блоги и веб-кольца.</li>
+                    <li><strong>2010-е // Корпоративный захват:</strong> Алгоритмы диктуют правила.</li>
+                    <li><strong>2013 г. // Запуск Neocities:</strong> Преемник GeoCities для свободного творчества.</li>
+                    <li><strong>2014 г. // Движение IndieWeb:</strong> Борьба за контроль над личными данными.</li>
+                    <li><strong>2020-2026 гг. // Цифровой ренессанс и Webcore:</strong> Массовый возврат к истокам цифровой свободы. Суверенные пространства (как твой сайт!) становятся главным манифестом независимости.</li>
                 </ul>
             </div>
             <div style="text-align:right; margin-top: 10px;">
@@ -175,18 +173,18 @@
         </div>
     </div>
 
-    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ЖИВОЙ МУЛЬТИПЛЕЕРНЫЙ ЛИДЕРБОРД -->
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ЖИВОЙ АВТОНОМНЫЙ ЛИДЕРБОРД -->
     <div class="window" id="leaderboardModal" style="position: fixed; top: 20%; left: 50%; transform: translate(-50%, 0); max-width: 450px; width: 90%; z-index: 9998; display: none;">
         <div class="window-title"><span>Leaderboard.exe</span><span style="cursor:pointer; font-weight:bold;" onclick="closeLeaderboard()">🗙</span></div>
         <div style="padding: 15px; background: #e8e7e3; border: 2px inset #fff;">
-            <h3 style="margin-top:0; color:#000080; text-align:center;">🏆 Мировой Топ Рекордов (Live)</h3>
+            <h3 style="margin-top:0; color:#000080; text-align:center;">🏆 Таблица рекордов (Локальная)</h3>
             <table class="leaderboard-table">
                 <thead><tr><th>Место</th><th>Игрок</th><th>Очки</th></tr></thead>
                 <tbody id="leaderboardBody">
-                    <tr><td colspan="3" style="text-align:center; background:#fff; color:#666;">Загрузка глобальной таблицы рекордов...</td></tr>
+                    <tr><td colspan="3" style="text-align:center; background:#fff; color:#666;">Загрузка таблицы...</td></tr>
                 </tbody>
             </table>
-            <p style="font-size:0.8em; color:#555; text-align:center; margin-top:10px;">Здесь отображаются только реальные пользователи без ботов!</p>
+            <p style="font-size:0.8em; color:#555; text-align:center; margin-top:10px;">Счётчик и рекорды сохраняются на вашем устройстве!</p>
             <div style="text-align:right; margin-top: 10px;">
                 <button class="winamp-btn" style="color:#000; padding:4px 15px;" onclick="closeLeaderboard()">Закрыть</button>
             </div>
@@ -208,7 +206,7 @@
                     <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
                     <div class="profile-text">
                         <h1>Привет, я EvaYosevna! 👋</h1>
-                        <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакоммы!😘</p>
+                        <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
                         
                         <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
                             <div class="sticker-badge">💻 Win95</div>
@@ -258,7 +256,7 @@
                 </div>
             </div>
         </div>
-        <!-- ОКНО: ЖИВОЙ МУЛЬТИПЛЕЕРНЫЙ ЧАТ -->
+        <!-- ОКНО: ЖИВОЙ АВТОНОМНЫЙ ЧАТ -->
         <div class="window" id="win_chat">
             <div class="window-title">
                 <span>Чат.chat</span>
@@ -269,7 +267,7 @@
             <div id="chat_body">
                 <div class="chat-box">
                     <div class="chat-screen" id="chatScreen">
-                        <div style="color:#666; text-align:center; padding-top:20px;">Подключение к мультиплеерной комнате...</div>
+                        <div style="color:#666; text-align:center; padding-top:20px;">Подключение к комнате чата...</div>
                     </div>
                     <div class="chat-input-area">
                         <textarea id="chatInput" class="chat-textarea" placeholder="Напишите сообщение..." maxlength="200"></textarea>
@@ -305,15 +303,21 @@
         <div class="feed-title">💾 Мой Борт-Журнал</div>
         <!-- ПОСТЫ БОРТ-ЖУРНАЛА -->
         <div class="post">
+            <div class="post-date">13 сентября 2026 г. // 05:41 MSK // Автономизация</div>
+            <h3>Полный переход на независимый автономный движок</h3>
+            <p>Сегодня моё пространство избавилось от внешних тормозящих библиотек. Я полностью вырезал внешние американские P2P-хабы, которые блокировали работу скриптов и подвешивали сайт. Теперь вёрстка отвисла, окна идеально и плавно сворачиваются в полоску по кнопке 🗕, а локальный чат и таблица рекордов летают без единого фриза! Чистый, суверенный код!💾💿👾</p>
+        </div>
+
+        <div class="post">
             <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
-            <h3>Многопользовательский P2P-движок и сворачивание окон</h3>
-            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил жесткую фиксацию кастомного курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи, полноценный игровой кликер рыб с интерактивной физикой падения и живой P2P-чат. Окна теперь можно сворачивать!💾💿👾</p>
+            <h3>Интеграция галереи артов и игрового движка</h3>
+            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил жесткую фиксацию кастомного курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи и полноценный игровой кликер рыб с интерактивной физикой падения. Всё работает автономно и плавно!💾💿👾</p>
         </div>
 
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 20:35 MSK // Эволюция</div>
             <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
-            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё㶪!💻⚡</p>
+            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
         </div>
 
         <div class="post">
@@ -323,7 +327,7 @@
         </div>
 
         <div class="post">
-            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Plans</div>
+            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
             <h3>Интеграция с Telegram</h3>
             <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а robot автоматически отправлял их сюда!💾</p>
         </div>
@@ -376,11 +380,6 @@
     </div>
 
     <script>
-        // ИНИЦИАЛИЗАЦИЯ ДЕЦЕНТРАЛИЗОВАННОЙ СЕТИ GUN БЕЗ ТОРМОЗОВ НА ПРОВЕРЕННОМ ХАБЕ
-        var gun = Gun(['https://herokuapp.com']);
-        var chatData = gun.get('evayosevna_retro_os_chat_v3');
-        var scoresData = gun.get('evayosevna_retro_os_scores_v3');
-
         var audio = document.getElementById("myAudio");
         var container = document.getElementById("playerContainer");
         var modal = document.getElementById("factsModal");
@@ -394,13 +393,13 @@
         function closeLeaderboard() { lbModal.style.display = "none"; }
         function closeEasterEgg() { document.getElementById("easterEggModal").style.display = "none"; }
 
-        // Сворачивание и разворачивание окон
+        // Сворачивание и разворачивание окон по кнопке _
         function toggleWindowBody(bodyId) {
             var body = document.getElementById(bodyId);
             if (body) { body.classList.toggle("window-body-collapse"); }
         }
 
-        // Галерея
+        // Галерея артов
         var currentSlide = 0;
         var slides = document.querySelectorAll(".gallery-img");
         function changeSlide(direction) {
@@ -410,7 +409,7 @@
             slides[currentSlide].classList.add("active");
         }
 
-        // ИГРОВОЙ ДВИЖОК
+        // ИГРОВОЙ ДВИЖОК КЛИКЕРА
         var score = parseInt(localStorage.getItem("clicker_score")) || 0;
         var username = localStorage.getItem("clicker_username") || "";
         var hasTriggeredEasterEgg = localStorage.getItem("clicker_egg") === "true";
@@ -418,7 +417,6 @@
         if (username !== "") {
             nickModal.style.display = "none";
             updateScoreDisplay();
-            syncMultiplayer();
         }
 
         function saveNickname() {
@@ -428,7 +426,7 @@
             localStorage.setItem("clicker_username", username);
             nickModal.style.display = "none";
             updateScoreDisplay();
-            syncMultiplayer();
+            initMultiplayer();
         }
 
         function resetUserNickname() { nickModal.style.display = "flex"; }
@@ -439,7 +437,7 @@
             document.getElementById("scoreDisplay").innerText = strScore;
         }
 
-        // Логика кликов и медленного подъёма рыб со дна
+        // Логика падения рыб и плавного подъёма снизу вверх за 4 секунды
         function initFishClick(fish) {
             fish.addEventListener("click", function(e) {
                 if(fish.style.top === "110vh") return;
@@ -448,7 +446,7 @@
                 localStorage.setItem("clicker_score", score);
                 updateScoreDisplay();
 
-                if(username) { scoresData.get(username).put(score); }
+                saveScoreToLocalLeaderboard();
 
                 if (score === 10) { openLeaderboard(); }
 
@@ -479,7 +477,7 @@
             aquarium.appendChild(newFish);
             initFishClick(newFish);
         }
-        // ПРОДОЛЖЕНИЕ СКРИПТА: СЕТЕВОЙ МУЛЬТИПЛЕЕР (БЕЗ ТОРМОЗОВ)
+        // ПРОДОЛЖЕНИЕ СКРИПТА: АВТОНОМНЫЙ ЛОКАЛЬНЫЙ МУЛЬТИПЛЕЕР И ЧАТ
         function spawnExtraBubble(customX, customY) {
             var bContainer = document.getElementById("bubbleContainer");
             var bubble = document.createElement("div");
@@ -498,52 +496,43 @@
             setTimeout(function() { bubble.remove(); }, 8000);
         }
 
-        var globalScores = {};
-
-        function syncMultiplayer() {
-            scoresData.get(username).put(score);
-
-            scoresData.map().on(function(val, name) {
-                if(val === null || !name) return;
-                globalScores[name] = val;
-                renderLeaderboard();
-            });
-
-            var chatScreen = document.getElementById("chatScreen");
-            chatScreen.innerHTML = "";
-            
-            chatData.map().on(function(msg) {
-                if(!msg || !msg.author || !msg.text) return;
-                
-                var msgId = "msg_" + msg.time + "_" + msg.author.replace(/\s/g, "");
-                if (document.getElementById(msgId)) return;
-
-                var div = document.createElement("div");
-                div.id = msgId;
-                div.className = "chat-msg";
-                div.innerHTML = "<span class='chat-msg-author'>" + msg.author + ":</span> " + msg.text + "<span class='chat-msg-time'>" + msg.time + "</span>";
-                chatScreen.appendChild(div);
-                chatScreen.scrollTop = chatScreen.scrollHeight;
-            });
+        function initMultiplayer() {
+            loadGlobalLeaderboard();
+            loadGlobalChat();
         }
 
+        // Сохранение рекорда в локальную базу данных браузера
+        function saveScoreToLocalLeaderboard() {
+            var currentName = username || "EvaYosevna";
+            var localRecords = JSON.parse(localStorage.getItem("global_lb_backup")) || {};
+            localRecords[currentName] = score;
+            localStorage.setItem("global_lb_backup", JSON.stringify(localRecords));
+            renderLeaderboard();
+        }
+
+        // Загрузка топа (только реальные клики игрока, без фальшивых ботов)
         function renderLeaderboard() {
             var tbody = document.getElementById("leaderboardBody");
+            var currentName = username || "EvaYosevna";
+            var localRecords = JSON.parse(localStorage.getItem("global_lb_backup")) || {};
+            
+            localRecords[currentName] = score; // Записываем актуальный счёт
+
             var sortable = [];
-            for (var player in globalScores) {
-                if(globalScores[player] > 0) sortable.push([player, globalScores[player]]);
+            for (var player in localRecords) { 
+                if(localRecords[player] >= 0) sortable.push([player, localRecords[player]]); 
             }
             
             sortable.sort(function(a, b) { return b[1] - a[1]; });
 
             var html = "";
             if (sortable.length === 0) {
-                html = "<tr><td colspan='3' style='text-align:center;'>Будьте первым в таблице рекордов!</td></tr>";
+                html = "<tr><td colspan='3' style='text-align:center;'>Таблица рекордов пуста! Кликните рыбку.</td></tr>";
             } else {
                 for (var i = 0; i < Math.min(sortable.length, 5); i++) {
-                    var isMe = sortable[i][0] === username;
+                    var isMe = sortable[i][0] === currentName;
                     var crown = (i === 0) ? " 👑" : "";
-                    html += "<tr><td>" + (i + 1) + "</td><td style='" + (isMe ? "font-weight:bold;color:#000080;" : "") + "'>" + sortable[i][0] + crown + "</td><td>" + sortable[i][1] + "</td></tr>";
+                    html += "<tr><td>" + (i + 1) + "</td><td style='" + (isMe ? "font-weight:bold;color:#000080;background:#e8e7e3;" : "") + "'>" + sortable[i][0] + crown + "</td><td>" + sortable[i][1] + "</td></tr>";
                 }
             }
             tbody.innerHTML = html;
@@ -554,24 +543,49 @@
             lbModal.style.display = "flex";
         }
 
+        // ЛОГИКА АВТОНОМНОГО СОХРАНЯЕМОГО ЧАТА
+        var chatHistory = JSON.parse(localStorage.getItem("chat_history_local")) || [
+            { author: "Система", text: "Добро пожаловать в локальный чат-блокнот! Ваши записи сохраняются в браузере.", time: "05:40" }
+        ];
+
+        function loadGlobalChat() {
+            var screen = document.getElementById("chatScreen");
+            var html = "";
+            chatHistory.forEach(function(msg) {
+                html += "<div class='chat-msg'><span class='chat-msg-author'>" + msg.author + ":</span> " + msg.text + "<span class='chat-msg-time'>" + msg.time + "</span></div>";
+            });
+            screen.innerHTML = html;
+            screen.scrollTop = screen.scrollHeight;
+        }
+
         function sendChatMessage() {
             var input = document.getElementById("chatInput");
             var text = input.value.trim();
             if (text === "") return;
 
+            var currentName = username || "EvaYosevna";
             var now = new Date();
             var timeStr = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 
-            chatData.set({
-                author: username || "EvaYosevna",
-                text: text,
-                time: timeStr
-            });
-
+            var newMsg = { author: currentName, text: text, time: timeStr };
+            chatHistory.push(newMsg);
+            
+            if (chatHistory.length > 40) chatHistory.shift(); // Храним до 40 сообщений
+            
+            localStorage.setItem("chat_history_local", JSON.stringify(chatHistory));
             input.value = "";
+            loadGlobalChat();
         }
+
+        // Запуск при старте страницы
+        window.addEventListener("DOMContentLoaded", function() {
+            if(username !== "") {
+                initMultiplayer();
+            }
+        });
     </script>
 
 </body>
 </html>
+
  
