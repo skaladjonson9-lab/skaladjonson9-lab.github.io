@@ -1,17 +1,18 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
     <style>
-        /* НАСТРОЙКА КУРСОРA-ДИСКА */
-        html, body, a, button, .winamp-btn, .facts-toggle-btn, .webring-btn, .gallery-btn, .clicker-btn {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>💿</text></svg>"), auto !important;
+        /* ЖЕСТКАЯ ФИКСАЦИЯ КУРСОРA-ДИСКА НА ПК */
+        html, body, a, button, div, span, img, iframe {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>💿</text></svg>") 16 16, auto !important;
         }
-        a:hover, button:hover, .winamp-btn:hover, .facts-toggle-btn:hover, .webring-btn:hover, .gallery-btn:hover, .clicker-btn:hover, .fish:hover, [onclick]:hover {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>👆</text></svg>"), pointer !important;
+        a:hover, button:hover, .winamp-btn:hover, .facts-toggle-btn:hover, .webring-btn:hover, .gallery-btn:hover, .clicker-btn:hover, .fish:hover {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>👆</text></svg>") 16 16, pointer !important;
         }
+
         body { 
             font-family: "Courier New", Courier, monospace; 
             margin: 0; padding: 0; background-color: #3b6ea5; 
@@ -19,16 +20,19 @@
             background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; image-rendering: pixelated; 
             color: #000000; overflow-x: hidden; 
         }
+
         .main-content { max-width: 700px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }
-        .fish-aquarium { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
-        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; pointer-events: auto; user-select: none; transition: transform 0.1s ease; }
-        .fish:active { transform: scaleX(-1) scale(1.4) rotate(15deg) !important; }
+        
+        /* ИГРОВОЙ АКВАРИУМ: Слои и физика */
+        .fish-aquarium { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99; }
+        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; pointer-events: auto; user-select: none; transition: top 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045), transform 0.2s ease; }
+        
         .fish-1 { top: 25%; animation-duration: 18s; }
         .fish-2 { top: 55%; font-size: 45px; animation-duration: 25s; animation-delay: -5s; }
         .fish-3 { top: 85%; font-size: 35px; animation-duration: 14s; animation-delay: -2s; }
         @keyframes swim { 0% { left: -120px; transform: scaleX(-1); } 100% { left: calc(100% + 120px); transform: scaleX(-1); } }
         
-        /* МЕГА-ПУЗЫРИ (УВЕЛИЧЕНЫ ДО 35px - 50px) */
+        /* МЕГА-ПУЗЫРИ (35px - 50px) */
         .bubble-container { position: fixed; bottom: -60px; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .bubble { position: absolute; background: rgba(255, 255, 255, 0.12); border: 2.5px solid rgba(255, 255, 255, 0.3); border-radius: 50%; bottom: -60px; animation: floatUp linear infinite; box-shadow: inset -5px -5px 10px rgba(255,255,255,0.2); }
         .b1 { left: 8%; width: 42px; height: 42px; animation-duration: 7s; }
@@ -104,6 +108,13 @@
 </head>
 <body>
 
+    <!-- СЛОЙ С РЫБКАМИ (АКВАРИУМ) -->
+    <div class="fish-aquarium" id="fishAquarium">
+        <div class="fish fish-1" id="f1">🐟</div>
+        <div class="fish fish-2" id="f2">🐠</div>
+        <div class="fish fish-3">id="f3"🐡</div>
+    </div>
+
     <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ХРОНИКИ INDIEWEB -->
     <div class="modal-overlay" id="factsModal">
         <div class="modal-window">
@@ -115,12 +126,12 @@
                 <h3 style="margin-top:0; color:#000080;">Хроники Свободного Интернета (1990 — 2026)</h3>
                 <hr>
                 <ul>
-                    <li><strong>1991-1994 гг. // Создание WWW и W3C:</strong> Интернет задумывался как децентрализованная сеть.</li>
+                    <li><strong>1991-1994 гг. // Создание WWW:</strong> Интернет задумывался как децентрализованная сеть.</li>
                     <li><strong>1994 г. // Запуск GeoCities:</strong> Появление легендарного хостинга домашних страниц.</li>
                     <li><strong>1996 г. // Появление стандарта CSS:</strong> Внедрение таблиц стилей совершает революцию в дизайне.</li>
-                    <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов и независимых веб-колец без алгоритмов.</li>
+                    <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов и независимых веб-колец.</li>
                     <li><strong>2010-е // Корпоративный захват:</strong> Интернет централизуется. Алгоритмические ленты диктуют правила.</li>
-                    <li><strong>2013 г. // Запуск Neocities:</strong> Рождается современный духовный преемник GeoCities для свободного творчества.</li>
+                    <li><strong>2013 г. // Запуск Neocities:</strong> Рождается современный преемник GeoCities для свободного творчества.</li>
                     <li><strong>2014 г. // Рождение движения IndieWeb:</strong> Движение за возвращение контроля над своими данными.</li>
                     <li><strong>2020-е // Эпоха ренессанса и Webcore:</strong> Массовый возврат пользователей к истокам цифровой свободы.</li>
                 </ul>
@@ -144,7 +155,7 @@
                     <tr><th>Место</th><th>Игрок</th><th>Очки</th></tr>
                     <tr><td>1</td><td>Хенкаль 👑</td><td>9999</td></tr>
                     <tr><td>2</td><td>EvaYosevna</td><td id="lbYourScore">0</td></tr>
-                    <li>3<td>IndieMaster</td><td>450</td></tr>
+                    <tr><td>3</td><td>IndieMaster</td><td>450</td></tr>
                     <tr><td>4</td><td>РетроХакер</td><td>310</td></tr>
                     <tr><td>5</td><td>Guest_95</td><td>120</td></tr>
                 </table>
@@ -155,9 +166,8 @@
         </div>
     </div>
 
-    <!-- ФИКСИРУЮЩИЙ СЛОЙ КОНТЕНТА -->
+    <!-- НАЧАЛО ГЛАВНОГО КОНТЕНТА -->
     <div class="main-content">
-
         <!-- Главное окно сайта -->
         <div class="window">
             <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
@@ -195,19 +205,20 @@
                 </div>
             </div>
         </div>
-        <!-- ОКНО: РЫБНЫЙ КЛИКЕР -->
+
+        <!-- ОКНО: КЛИКЕР РЫБОК -->
         <div class="window">
             <div class="window-title"><span>Рыбный_Кликер.exe</span><span>🗙</span></div>
             <div class="clicker-box">
-                <p style="margin-top:0; font-weight:bold;">Кликай прямо по проплывающим рыбкам на экране!</p>
+                <p style="margin-top:0; font-weight:bold;">Жми прямо по проплывающим рыбам!</p>
                 <div class="clicker-score" id="scoreDisplay">000000</div>
                 <br>
                 <button class="clicker-btn" onclick="openLeaderboard()">🏆 Лидерборд</button>
-                <button class="clicker-btn" onclick="spawnExtraBubble()">🫧 Покормить рыбок</button>
+                <button class="clicker-btn" onclick="spawnExtraFish()">🐟 Покормить (Больше рыб)</button>
             </div>
         </div>
 
-        <!-- ОКНО: СИСТЕМНАЯ ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
+        <!-- ОКНО: ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
         <div class="window">
             <div class="window-title"><span>Галерея_Мемеоза.exe</span><span>🗙</span></div>
             <div class="gallery-box">
@@ -227,8 +238,8 @@
         <!-- ПОСТЫ БОРТ-ЖУРНАЛА -->
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
-            <h3>Интеграция галереи артов и кастомного курсора</h3>
-            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил кастомный движок курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи, куда собрал крутейшие арты Interior_03, screenwindowsvhs и другие медиафайлы. Всё работает автономно и плавно!💾💿👾</p>
+            <h3>Интеграция галереи артов и игрового движка</h3>
+            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил жесткую фиксацию кастомного курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи и полноценный игровой кликер рыб с интерактивной физикой падения. Всё работает автономно и плавно!💾💿👾</p>
         </div>
 
         <div class="post">
@@ -252,7 +263,7 @@
         <div class="post">
             <div class="post-date">12 сентября 2026 г. // 16:30 MSK // Стрим</div>
             <h3>Эстетика Webcore и Ретро-инди</h3>
-            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
+            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой style в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
         </div>
 
         <div class="post">
@@ -267,7 +278,7 @@
             <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
         </div>
 
-        <!-- ПОДВАЛ С ЧИСТЫМИ ССЫЛКАМИ И ВЕБ-РИНГОМ -->
+        <!-- ПОДВАЛ С ТВОИМИ ССЫЛКАМИ И ВЕБ-РИНГОМ -->
         <div class="blink-footer">
             <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
             <div class="blink-buttons">
@@ -288,7 +299,7 @@
 
     </div> <!-- main-content -->
 
-    <!-- СЛОЙ ПУЗЫРЕЙ -->
+    <!-- КОНТЕЙНЕР МЕГА-ПУЗЫРЕЙ -->
     <div class="bubble-container" id="bubbleContainer">
         <div class="bubble b1"></div>
         <div class="bubble b2"></div>
@@ -300,26 +311,15 @@
     <script>
         var audio = document.getElementById("myAudio");
         var container = document.getElementById("playerContainer");
-        var statusText = document.getElementById("trackStatus");
-        
-        // Логика Winamp
-        function playMusic() {
-            audio.play().catch(function(e) { console.log("Ждет клика."); });
-            container.classList.add("playing");
-        }
-        function stopMusic() {
-            audio.pause(); audio.currentTime = 0;
-            container.classList.remove("playing");
-        }
+        var modal = document.getElementById("factsModal");
+        var lbModal = document.getElementById("leaderboardModal");
 
-        // Хроники и Лидерборд
-        function openFacts() { document.getElementById("factsModal").style.display = "flex"; }
-        function closeFacts() { document.getElementById("factsModal").style.display = "none"; }
-        function openLeaderboard() { 
-            document.getElementById("lbYourScore").innerText = score;
-            document.getElementById("leaderboardModal").style.display = "flex"; 
-        }
-        function closeLeaderboard() { document.getElementById("leaderboardModal").style.display = "none"; }
+        function playMusic() { audio.play().catch(function(e){}); container.classList.add("playing"); }
+        function stopMusic() { audio.pause(); audio.currentTime = 0; container.classList.remove("playing"); }
+        function openFacts() { modal.style.display = "flex"; }
+        function closeFacts() { modal.style.display = "none"; }
+        function openLeaderboard() { document.getElementById("lbYourScore").innerText = score; lbModal.style.display = "flex"; }
+        function closeLeaderboard() { lbModal.style.display = "none"; }
 
         // Галерея
         var currentSlide = 0;
@@ -335,22 +335,39 @@
         var score = 0;
         var hasTriggeredEasterEgg = false;
 
-        // Поиск рыбок и навешивание кликов
-        document.querySelectorAll(".fish").forEach(function(fish) {
+        // Функция навешивания клика на рыбу
+        function initFishClick(fish) {
             fish.addEventListener("click", function(e) {
-                score += 10; // За каждый удачный клик по рыбе даем 10 очков
+                // Если рыба уже падает, повторно не кликаем
+                if(fish.style.top === "110vh") return;
+
+                score += 10;
                 updateScoreDisplay();
-                
-                // Проверка пасхалки на 500 очков
+
+                // При первом клике автоматически вызываем Лидерборд
+                if (score === 10) { openLeaderboard(); }
+
+                // Пасхалка на 500 очков
                 if (score >= 500 && !hasTriggeredEasterEgg) {
                     hasTriggeredEasterEgg = true;
                     alert("Системное сообщение Windows 95:\n\nСпасибо за тестирование Хенкалю!");
                 }
-                
-                // Эффект брызг от клика
+
+                // Спавним мега-пузырь из рыбы
                 spawnExtraBubble(e.clientX, e.clientY);
+
+                // Физика падения: запоминаем старый top, бросаем вниз, затем возвращаем
+                var oldTop = fish.style.top || window.getComputedStyle(fish).top;
+                fish.style.top = "110vh";
+
+                setTimeout(function() {
+                    fish.style.top = oldTop;
+                }, 3500);
             });
-        });
+        }
+
+        // Запуск кликов для базовых рыб
+        document.querySelectorAll(".fish").forEach(initFishClick);
 
         function updateScoreDisplay() {
             var strScore = score.toString();
@@ -358,13 +375,29 @@
             document.getElementById("scoreDisplay").innerText = strScore;
         }
 
-        // Спавн мега-пузырей кнопкой или кликом по рыбе
+        // Кнопка "Покормить": добавляет новую рабочую плавающую рыбу
+        function spawnExtraFish() {
+            var aquarium = document.getElementById("fishAquarium");
+            var newFish = document.createElement("div");
+            newFish.className = "fish";
+            
+            // Выбираем случайный вид рыбы
+            var fishTypes = ["🐟", "🐠", "🐡", "🐙"];
+            newFish.innerText = fishTypes[Math.floor(Math.random() * fishTypes.length)];
+            
+            // Случайная высота плавания и скорость
+            newFish.style.top = (Math.floor(Math.random() * 70) + 15) + "%";
+            newFish.style.animationDuration = (Math.floor(Math.random() * 15) + 10) + "s";
+            
+            aquarium.appendChild(newFish);
+            initFishClick(newFish); // Делаем новую рыбу кликабельной и падающей
+        }
+
+        // Спавн мега-пузырей
         function spawnExtraBubble(customX, customY) {
-            var container = document.getElementById("bubbleContainer");
+            var bContainer = document.getElementById("bubbleContainer");
             var bubble = document.createElement("div");
             bubble.className = "bubble";
-            
-            // Задаем случайный крупный размер от 35px до 55px
             var size = Math.floor(Math.random() * 20) + 35;
             bubble.style.width = size + "px";
             bubble.style.height = size + "px";
@@ -376,15 +409,13 @@
                 bubble.style.left = Math.floor(Math.random() * 90) + 5 + "%";
                 bubble.style.bottom = "-60px";
             }
-            
             bubble.style.animation = "floatUp 8s linear infinite";
-            container.appendChild(bubble);
-            
-            // Удаляем старые пузыри, чтобы сайт не тормозил
+            bContainer.appendChild(bubble);
             setTimeout(function() { bubble.remove(); }, 8000);
         }
     </script>
 
 </body>
 </html>
+
 
