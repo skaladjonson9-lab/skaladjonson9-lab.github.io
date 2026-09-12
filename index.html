@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -49,10 +49,10 @@
             100% { left: calc(100% + 120px); transform: scaleX(-1); }
         }
 
-        /* МАГИЯ АКВАРИУМА: ПОДНИМАЮЩИЕСЯ ПУЗЫРЬКИ */
+        /* МАГИЯ АКВАРИУМА: КРУПНЫЕ ПОДНИМАЮЩИЕСЯ ПУЗЫРЬКИ */
         .bubble-container {
             position: fixed;
-            bottom: -20px;
+            bottom: -40px;
             left: 0;
             width: 100%;
             height: 100%;
@@ -61,47 +61,26 @@
         }
         .bubble {
             position: absolute;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.25);
             border-radius: 50%;
-            bottom: -20px;
+            bottom: -40px;
             animation: floatUp linear infinite;
+            box-shadow: inset -3px -3px 6px rgba(255,255,255,0.2);
         }
-        .b1 { left: 10%; width: 12px; height: 12px; animation-duration: 8s; animation-delay: 0s; }
-        .b2 { left: 30%; width: 8px; height: 8px; animation-duration: 11s; animation-delay: 2s; }
-        .b3 { left: 55%; width: 16px; height: 16px; animation-duration: 9s; animation-delay: 1s; }
-        .b4 { left: 75%; width: 6px; height: 6px; animation-duration: 14s; animation-delay: 4s; }
-        .b5 { left: 90%; width: 10px; height: 10px; animation-duration: 7s; animation-delay: 3s; }
+        /* УВЕЛИЧЕННЫЕ РАЗМЕРЫ ПУЗЫРЕЙ (от 15px до 32px) */
+        .b1 { left: 8%; width: 24px; height: 24px; animation-duration: 7s; animation-delay: 0s; }
+        .b2 { left: 28%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: 2s; }
+        .b3 { left: 52%; width: 32px; height: 32px; animation-duration: 8s; animation-delay: 1s; }
+        .b4 { left: 78%; width: 14px; height: 14px; animation-duration: 12s; animation-delay: 3s; }
+        .b5 { left: 88%; width: 22px; height: 22px; animation-duration: 6s; animation-delay: 1.5s; }
         
         @keyframes floatUp {
             0% { transform: translateY(0) translateX(0); opacity: 0; }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
-            100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
+            100% { transform: translateY(-115vh) translateX(40px); opacity: 0; }
         }
-
-        /* НАСТОЯЩИЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР (WINAMP STYLE) */
-        .winamp-player {
-            background: #222;
-            border: 2px solid #444;
-            border-radius: 4px;
-            padding: 10px;
-            margin-top: 15px;
-            color: #00ff00; 
-            font-family: monospace;
-            box-shadow: inset 2px 2px 5px #000;
-        }
-        .winamp-title { font-size: 0.8em; color: #888; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
-        .winamp-display { background: #000; padding: 6px; border: 1px solid #333; font-size: 0.85em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border-radius: 2px; box-shadow: inset 0 0 4px #00ff00; display: flex; justify-content: space-between; }
-        .winamp-controls { display: flex; gap: 8px; margin-top: 8px; font-size: 0.75em; }
-        .winamp-btn { background: #333; color: #fff; padding: 2px 8px; border: 1px solid #555; cursor: pointer; text-transform: uppercase; font-weight: bold; border-radius: 2px; user-select: none; }
-        .winamp-btn:active { background: #111; }
-        
-        .eq-bar { display: inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
-        .playing .eq-1 { animation: eq 0.4s ease-in-out infinite alternate; }
-        .playing .eq-2 { animation: eq 0.6s ease-in-out infinite alternate; }
-        .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
-        @keyframes eq { 0% { height: 2px; } 100% { height: 14px; } }
 
         /* Изначальные стили Windows 95 */
         .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; position: relative; z-index: 2; }
@@ -163,22 +142,9 @@
                 <h1>Привет, я EvaYosevna! 👋</h1>
                 <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
                 
-                <!-- НАСТОЯЩИЙ ЖИВОЙ ПЛЕЕР -->
-                <div class="winamp-player" id="playerContainer">
-                    <div class="winamp-title">♫ Winamp Audio Player</div>
-                    <div class="winamp-display">
-                        <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
-                        <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
-                            <div class="eq-bar eq-1"></div>
-                            <div class="eq-bar eq-2"></div>
-                            <div class="eq-bar eq-3"></div>
-                        </div>
-                    </div>
-                    <div class="winamp-controls">
-                        <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
-                        <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
-                    </div>
-                    <audio id="myAudio" src="https://m9.is" loop></audio>
+                <!-- ОФИЦИАЛЬНЫЙ РАБОЧИЙ ПЛЕЕР SOUNDCLOUD -->
+                <div style="margin-top: 15px; border: 2px solid #444; border-radius: 4px; box-shadow: 3px 3px 0px rgba(0,0,0,0.2); overflow: hidden; height: 120px;">
+                    <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" src="https://soundcloud.com"></iframe>
                 </div>
                 
             </div>
@@ -220,35 +186,13 @@
     <div class="blink-footer">
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
-            <a href="https://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
-            <a href="t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
+            <a href="https://github.com" target="_blank" class="blink-btn gh">GitHub</a>
+            <a href="https://t.me" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
 
-    <script>
-        var audio = document.getElementById("myAudio");
-        var container = document.getElementById("playerContainer");
-        var statusText = document.getElementById("trackStatus");
-
-        function playMusic() {
-            audio.play().catch(function(error) {
-                console.log("Воспроизведение заблокировано браузером. Требуется клик.");
-            });
-            container.classList.add("playing");
-            statusText.innerText = "▶ p3b3 - The Scooby Snacks";
-        }
-
-        function stopMusic() {
-            audio.pause();
-            audio.currentTime = 0;
-            container.classList.remove("playing");
-            statusText.innerText = "■ p3b3 - The Scooby Snacks";
-        }
-    </script>
-
 </body>
 </html>
-
 
 
 
