@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
             padding: 20px; 
             background-color: #3b6ea5; 
             
-            /* Твои изначальные обои с затемнением */
+            /* Тёмная вуаль 40% и твоя гифка windows.gif */
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                         url("windows.gif") #3b6ea5; 
             background-repeat: no-repeat; 
@@ -22,60 +22,93 @@
             image-rendering: pixelated;      
             
             color: #000000; 
-            overflow-x: hidden; /* Чтобы рыбки не растягивали экран при уплывании */
+            overflow-x: hidden; 
             position: relative;
         }
 
-        /* -------------------------------------------------- */
-        /*  МАГИЯ АКВАРИУМА: АНИМАЦИЯ ПЛАВАЮЩИХ РЫБОК          */
-        /* -------------------------------------------------- */
+        /* МАГИЯ АКВАРИУМА: АНИМАЦИЯ ПЛАВАЮЩИХ РЫБОК */
         .fish-aquarium {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Чтобы рыбок нельзя было случайно кликнуть */
-            z-index: -1; /* Рыбки плавают НАД фоном, но ПОД окнами с текстом */
+            pointer-events: none; 
+            z-index: -1; 
         }
-
-        .fish {
-            position: absolute;
-            font-size: 40px; /* Размер пиксельных рыбок */
-            animation: swim linear infinite;
-        }
-
-        .fish-1 {
-            top: 20%;
-            animation-duration: 18s; /* Скорость плавания */
-            animation-delay: 0s;
-        }
-
-        .fish-2 {
-            top: 50%;
-            font-size: 32px;
-            animation-duration: 25s;
-            animation-delay: -5s;
-        }
-
-        .fish-3 {
-            top: 80%;
-            font-size: 24px;
-            animation-duration: 14s;
-            animation-delay: -2s;
-        }
-
+        
+        /* КРУПНЫЕ РЫБКИ: Базовый размер 55px */
+        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; }
+        .fish-1 { top: 25%; animation-duration: 18s; animation-delay: 0s; }
+        .fish-2 { top: 55%; font-size: 45px; animation-duration: 25s; animation-delay: -5s; }
+        .fish-3 { top: 85%; font-size: 35px; animation-duration: 14s; animation-delay: -2s; }
+        
+        /* НАПРАВЛЕНИЕ: Развернули рыбок носом вперёд (направо) */
         @keyframes swim {
-            0% { left: -100px; transform: scaleX(1); }
-            100% { left: calc(100% + 100px); transform: scaleX(1); }
+            0% { left: -120px; transform: scaleX(-1); }
+            100% { left: calc(100% + 120px); transform: scaleX(-1); }
         }
-        /* -------------------------------------------------- */
 
+        /* МАГИЯ АКВАРИУМА: ПОДНИМАЮЩИЕСЯ ПУЗЫРЬКИ */
+        .bubble-container {
+            position: fixed;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            bottom: -20px;
+            animation: floatUp linear infinite;
+        }
+        .b1 { left: 10%; width: 12px; height: 12px; animation-duration: 8s; animation-delay: 0s; }
+        .b2 { left: 30%; width: 8px; height: 8px; animation-duration: 11s; animation-delay: 2s; }
+        .b3 { left: 55%; width: 16px; height: 16px; animation-duration: 9s; animation-delay: 1s; }
+        .b4 { left: 75%; width: 6px; height: 6px; animation-duration: 14s; animation-delay: 4s; }
+        .b5 { left: 90%; width: 10px; height: 10px; animation-duration: 7s; animation-delay: 3s; }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
+        }
+
+        /* НАСТОЯЩИЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР (WINAMP STYLE) */
+        .winamp-player {
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 15px;
+            color: #00ff00; 
+            font-family: monospace;
+            box-shadow: inset 2px 2px 5px #000;
+        }
+        .winamp-title { font-size: 0.8em; color: #888; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
+        .winamp-display { background: #000; padding: 6px; border: 1px solid #333; font-size: 0.85em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border-radius: 2px; box-shadow: inset 0 0 4px #00ff00; display: flex; justify-content: space-between; }
+        .winamp-controls { display: flex; gap: 8px; margin-top: 8px; font-size: 0.75em; }
+        .winamp-btn { background: #333; color: #fff; padding: 2px 8px; border: 1px solid #555; cursor: pointer; text-transform: uppercase; font-weight: bold; border-radius: 2px; user-select: none; }
+        .winamp-btn:active { background: #111; }
+        
+        .eq-bar { display: inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
+        .playing .eq-1 { animation: eq 0.4s ease-in-out infinite alternate; }
+        .playing .eq-2 { animation: eq 0.6s ease-in-out infinite alternate; }
+        .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
+        @keyframes eq { 0% { height: 2px; } 100% { height: 14px; } }
+
+        /* Изначальные стили Windows 95 */
         .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; position: relative; z-index: 2; }
         .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
         .profile { display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px; border: 2px inset #fff; }
         .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
-        .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; }
+        .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; color: #000; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
         
         .feed-title { 
@@ -105,11 +138,20 @@
 </head>
 <body>
 
-    <!-- СЛОЙ С ПЛАВАЮЩИМИ РЫБКАМИ -->
+    <!-- СЛОЙ С РЫБКАМИ -->
     <div class="fish-aquarium">
         <div class="fish fish-1">🐟</div>
         <div class="fish fish-2">🐠</div>
         <div class="fish fish-3">🐡</div>
+    </div>
+
+    <!-- СЛОЙ С ПУЗЫРЬКАМИ -->
+    <div class="bubble-container">
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
+        <div class="bubble b5"></div>
     </div>
 
     <!-- Главное окно сайта -->
@@ -119,7 +161,26 @@
             <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
             <div class="profile-text">
                 <h1>Привет, я EvaYosevna! 👋</h1>
-                <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакоммы!😘</p>
+                <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
+                
+                <!-- НАСТОЯЩИЙ ЖИВОЙ ПЛЕЕР -->
+                <div class="winamp-player" id="playerContainer">
+                    <div class="winamp-title">♫ Winamp Audio Player</div>
+                    <div class="winamp-display">
+                        <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
+                        <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
+                            <div class="eq-bar eq-1"></div>
+                            <div class="eq-bar eq-2"></div>
+                            <div class="eq-bar eq-3"></div>
+                        </div>
+                    </div>
+                    <div class="winamp-controls">
+                        <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
+                        <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
+                    </div>
+                    <audio id="myAudio" src="https://m9.is" loop></audio>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -129,7 +190,7 @@
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Неудача</div>
         <h3>Неудачное подключение</h3>
-        <p>У меня удалось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
+        <p>У меня получилось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
     </div>
 
     <div class="post">
@@ -152,7 +213,7 @@
 
     <div class="post">
         <div class="post-date">12 сентября 2026 г. // Старт</div>
-        <h3>Мой первый пост в IndieWeb!💾</h3>
+        <h3>Мой первый post в IndieWeb!💾</h3>
         <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
     </div>
 
@@ -160,12 +221,35 @@
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
             <a href="https://github.com/skaladjonson9-lab" target="_blank" class="blink-btn gh">GitHub</a>
-            <a href="https://t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
+            <a href="t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
 
+    <script>
+        var audio = document.getElementById("myAudio");
+        var container = document.getElementById("playerContainer");
+        var statusText = document.getElementById("trackStatus");
+
+        function playMusic() {
+            audio.play().catch(function(error) {
+                console.log("Воспроизведение заблокировано браузером. Требуется клик.");
+            });
+            container.classList.add("playing");
+            statusText.innerText = "▶ p3b3 - The Scooby Snacks";
+        }
+
+        function stopMusic() {
+            audio.pause();
+            audio.currentTime = 0;
+            container.classList.remove("playing");
+            statusText.innerText = "■ p3b3 - The Scooby Snacks";
+        }
+    </script>
+
 </body>
 </html>
+
+
 
 
 
