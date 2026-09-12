@@ -81,87 +81,211 @@
         .blink-btn.gh { background: #24292e; }
     </style>
 </head>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvaYosevna // Персональная страница</title>
-    <style>
-        html, body, a, button, .winamp-btn, .facts-toggle-btn, .webring-btn {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>💿</text></svg>"), auto;
-        }
-        a:hover, button:hover, .winamp-btn:hover, .facts-toggle-btn:hover, .webring-btn:hover, .gallery-btn:hover, [onclick]:hover {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='32' height='32' style='font-size:24px'><text y='24'>👆</text></svg>"), pointer !important;
-        }
-        body { 
-            font-family: "Courier New", Courier, monospace; 
-            margin: 0; padding: 0; background-color: #3b6ea5; 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("windows.gif") #3b6ea5; 
-            background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; image-rendering: pixelated; 
-            color: #000000; overflow-x: hidden; 
-        }
-        .main-content { max-width: 700px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }
-        .fish-aquarium { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .fish { position: absolute; font-size: 55px; animation: swim linear infinite; }
-        .fish-1 { top: 25%; animation-duration: 18s; }
-        .fish-2 { top: 55%; font-size: 45px; animation-duration: 25s; animation-delay: -5s; }
-        .fish-3 { top: 85%; font-size: 35px; animation-duration: 14s; animation-delay: -2s; }
-        @keyframes swim { 0% { left: -120px; transform: scaleX(-1); } 100% { left: calc(100% + 120px); transform: scaleX(-1); } }
-        .bubble-container { position: fixed; bottom: -40px; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .bubble { position: absolute; background: rgba(255, 255, 255, 0.12); border: 2px solid rgba(255, 255, 255, 0.25); border-radius: 50%; bottom: -40px; animation: floatUp linear infinite; }
-        .b1 { left: 8%; width: 24px; height: 24px; animation-duration: 7s; }
-        .b2 { left: 28%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: 2s; }
-        .b3 { left: 52%; width: 32px; height: 32px; animation-duration: 8s; animation-delay: 1s; }
-        .b4 { left: 78%; width: 14px; height: 14px; animation-duration: 12s; animation-delay: 3s; }
-        .b5 { left: 88%; width: 22px; height: 22px; animation-duration: 6s; animation-delay: 1.5s; }
-        @keyframes floatUp { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(-115vh) translateX(40px); opacity: 0; } }
-        .winamp-player { background: #222; border: 2px solid #444; border-radius: 4px; padding: 10px; margin-top: 15px; color: #00ff00; font-family: monospace; }
-        .winamp-title { font-size: 0.8em; color: #888; text-transform: uppercase; margin-bottom: 5px; }
-        .winamp-display { background: #000; padding: 6px; border: 1px solid #333; font-size: 0.85em; overflow: hidden; white-space: nowrap; display: flex; justify-content: space-between; }
-        .winamp-controls { display: flex; gap: 8px; margin-top: 8px; font-size: 0.75em; }
-        .winamp-btn { background: #333; color: #fff; padding: 2px 8px; border: 1px solid #555; text-transform: uppercase; font-weight: bold; border-radius: 2px; user-select: none; }
-        .winamp-btn:active { background: #111; }
-        .eq-bar { display: inline-block; width: 3px; background: #00ff00; margin-left: 1px; height: 10px; vertical-align: bottom; }
-        .playing .eq-1 { animation: eq 0.4s ease-in-out infinite alternate; }
-        .playing .eq-2 { animation: eq 0.6s ease-in-out infinite alternate; }
-        .playing .eq-3 { animation: eq 0.5s ease-in-out infinite alternate; }
-        @keyframes eq { 0% { height: 2px; } 100% { height: 14px; } }
-        .window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; padding: 15px; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); margin-bottom: 25px; }
-        .window-title { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 4px 8px; font-weight: bold; font-size: 0.9em; margin: -15px -15px 15px -15px; display: flex; justify-content: space-between; }
-        .profile { display: flex; align-items: center; gap: 20px; background: #e8e7e3; padding: 15px; border: 2px inset #fff; }
-        .avatar { width: 75px; height: 75px; border: 2px solid #000; image-rendering: pixelated; }
-        .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; color: #000; }
-        .profile-text p { margin: 0; font-size: 0.9em; color: #222; }
-        .sticker-badge { background: #d4d0c8; border: 1px solid; border-color: #fff #808080 #808080 #fff; padding: 2px 6px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; gap: 4px; box-shadow: 1px 1px 0px rgba(0,0,0,0.3); }
-        .facts-toggle-btn { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 6px 12px; font-size: 0.85em; font-weight: bold; font-family: sans-serif; margin-top: 15px; box-shadow: 2px 2px 0px rgba(0,0,0,0.4); display: inline-block; user-select: none; }
-        .facts-toggle-btn:active { border-color: #808080 #fff #fff #808080; padding: 7px 11px 5px 13px; box-shadow: none; }
-        .gallery-box { background: #e8e7e3; border: 2px inset #fff; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 5px; }
-        .gallery-screen { width: 100%; max-width: 400px; height: 250px; background: #000; border: 2px inset #fff; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; }
-        .gallery-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
-        .gallery-img.active { display: block; }
-        .gallery-controls { display: flex; gap: 15px; width: 100%; justify-content: center; }
-        .gallery-btn { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; color: #000; padding: 4px 15px; font-weight: bold; font-size: 0.85em; user-select: none; }
-        .gallery-btn:active { border-color: #808080 #fff #fff #808080; }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box; }
-        .modal-window { background: #d4d0c8; border: 3px solid; border-color: #fff #808080 #808080 #fff; width: 100%; max-width: 550px; box-shadow: 10px 10px 0px rgba(0,0,0,0.4); z-index: 1000; box-sizing: border-box; }
-        .modal-body { background: #e8e7e3; border: 2px inset #fff; margin: 15px; padding: 15px; height: 350px; overflow-y: scroll; font-size: 0.9em; line-height: 1.5; color: #000; }
-        .modal-body ul { padding-left: 20px; margin-top: 5px; }
-        .modal-body li { margin-bottom: 12px; }
-        .feed-title { color: #fff; background: #000080; padding: 6px 10px; border: 2px inset #fff; display: inline-block; margin-top: 30px; margin-bottom: 10px; font-size: 1.4em; text-transform: uppercase; }
-        .post { background: #e8e7e3; padding: 15px; border: 2px inset #fff; margin-bottom: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,0.2); }
-        .post-date { font-size: 0.85em; color: #444; font-weight: bold; border-bottom: 1px dashed #bbb; padding-bottom: 5px; margin-bottom: 10px; }
-        .post h3 { margin: 0 0 8px 0; color: #000080; }
-        .blink-footer { text-align: center; margin-top: 40px; padding-top: 15px; border-top: 2px double #fff; }
-        .webring-panel { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; max-width: 450px; margin: 20px auto 0 auto; padding: 10px; box-shadow: 3px 3px 0px rgba(0,0,0,0.3); font-size: 0.85em; }
-        .webring-title { font-weight: bold; color: #000080; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .webring-controls { display: flex; justify-content: center; gap: 10px; align-items: center; margin-top: 8px; }
-        .webring-btn { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; color: #000; padding: 2px 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
-        .webring-btn:active { border-color: #808080 #fff #fff #808080; }
-        .blink-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-        .blink-btn { display: inline-block; width: 100px; height: 31px; line-height: 31px; background: #000; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; border: 2px solid; border-color: #fff #555 #555 #fff; text-transform: uppercase; font-family: sans-serif; }
-        .blink-btn.tg { background: #0088cc; }
-        .blink-btn.gh { background: #24292e; }
-    </style>
-</head>
+<body>
 
+    <!-- СЛОЙ С РЫБКАМИ -->
+    <div class="fish-aquarium">
+        <div class="fish fish-1">🐟</div>
+        <div class="fish fish-2">🐠</div>
+        <div class="fish fish-3">🐡</div>
+    </div>
+
+    <!-- СЛОЙ С ПУЗЫРЬКАМИ -->
+    <div class="bubble-container">
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
+        <div class="bubble b5"></div>
+    </div>
+
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО: ХРОНИКИ INDIEWEB -->
+    <div class="modal-overlay" id="factsModal">
+        <div class="modal-window">
+            <div class="window-title">
+                <span>IndieWeb_History.txt</span>
+                <span style="cursor:pointer; font-weight:bold;" onclick="closeFacts()">🗙</span>
+            </div>
+            <div class="modal-body">
+                <h3 style="margin-top:0; color:#000080;">Хроники Свободного Интернета (1990 — 2026)</h3>
+                <hr>
+                <ul>
+                    <li><strong>1991-1994 гг. // Создание WWW и W3C:</strong> Тим Бернерс-Ли запускает первый в мире веб-сайт и основывает Консорциум Всемирной паутины (W3C). Интернет задумавался как децентрализованная сеть.</li>
+                    <li><strong>1994 г. // Запуск GeoCities:</strong> Появление легендарного хостинга, который подарил миллионам людей возможность бесплатно создавать домашние страницы. Веб заполняется пиксельной графикой.</li>
+                    <li><strong>1996 г. // Появление стандарта CSS:</strong> Внедрение каскадных таблиц стилей совершает революцию. Пользователи получают полную свободу кастомизации своих страниц.</li>
+                    <li><strong>2000-е // Расцвет блогосферы:</strong> Эпоха персональных сайтов. Люди обменивались ссылками напрямую через веб-ринги и пиксельные баннеры-блинки, формируя сообщества без алгоритмов.</li>
+                    <li><strong>2010-е // Корпоративный захват:</strong> Появление гигантов вроде Facebook, Instagram и Twitter. Интернет резко централизуется. Алгоритмические ленты начинают диктовать свои жесткие правила.</li>
+                    <li><strong>2013 г. // Запуск Neocities:</strong> Рождается современный духовный преемник GeoCities, дающий приют новому поколению независимых авторов для творчества без рекламы.</li>
+                    <li><strong>2014 г. // Рождение движения IndieWeb:</strong> Группа энтузиастов создаёт движение за возвращение контроля над своими данными. Появляются технологии Webmention и Microformats.</li>
+                    <li><strong>2020-е // Эпоха ренессанса и Webcore:</strong> Пользователи, уставшие от душных соцсетей, массово возвращаются к истокам. Персональный сайт становится главным манифестом цифровой свободы.</li>
+                </ul>
+            </div>
+            <div style="text-align:right; padding: 0 15px 15px 15px;">
+                <button class="winamp-btn" style="color:#000; padding:4px 15px;" onclick="closeFacts()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ГЛАВНАЯ ОБЁРТКА КОНТЕНТА: ПОДНИМАЕТ ОКНА НАД ФОНОМ -->
+    <div class="main-content">
+
+        <!-- Главное окно сайта -->
+        <div class="window">
+            <div class="window-title"><span>EvaYosevna_OS.exe</span><span>🗙</span></div>
+            <div class="profile">
+                <img class="avatar" src="2ef9de1c-727f-42b8-b9e9-481c7e6b4b70.png" alt="EvaYosevna">
+                <div class="profile-text">
+                    <h1>Привет, я EvaYosevna! 👋</h1>
+                    <p>Добро пожаловать в мой независимый уголок интернета. В интернете меня зовут Ева, будем знакомы!😘</p>
+                    
+                    <!-- НАДЕЖНЫЕ СИСТЕМНЫЕ БАДЖИ -->
+                    <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px dashed #bbb; padding-top: 10px; flex-wrap: wrap;">
+                        <div class="sticker-badge">💻 Win95</div>
+                        <div class="sticker-badge">💾 Save</div>
+                        <div class="sticker-badge">🌐 IE</div>
+                    </div>
+
+                    <!-- КНОПКА ДЛЯ ОТКРЫТИЯ ФАКТОВ -->
+                    <div class="facts-toggle-btn" onclick="openFacts()">💾 Хроники IndieWeb (1990-2026)</div>
+
+                    <!-- НАСТОЯЩИЙ ЖИВОЙ ПЛЕЕР -->
+                    <div class="winamp-player" id="playerContainer">
+                        <div class="winamp-title">♫ Winamp Audio Player</div>
+                        <div class="winamp-display">
+                            <span id="trackStatus">■ p3b3 - The Scooby Snacks</span>
+                            <div id="eqGroup" style="display: flex; align-items: flex-end; height: 14px;">
+                                <div class="eq-bar eq-1"></div>
+                                <div class="eq-bar eq-2"></div>
+                                <div class="eq-bar eq-3"></div>
+                            </div>
+                        </div>
+                        <div class="winamp-controls">
+                            <div class="winamp-btn" onclick="stopMusic()">■ stop</div>
+                            <div class="winamp-btn" onclick="playMusic()" style="color: #00ff00;">▶ play</div>
+                        </div>
+                        <audio id="myAudio" src="p3b3 - The Scooby Snacks.m4a" loop></audio>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ОКНО: СИСТЕМНАЯ ГАЛЕРЕЯ ТВОИХ КАРТИНОК -->
+        <div class="window">
+            <div class="window-title"><span>Галерея_Мемеоза.exe</span><span>🗙</span></div>
+            <div class="gallery-box">
+                <div class="gallery-screen">
+                    <img class="gallery-img active" src="Interior_03.gif" alt="Interior">
+                    <img class="gallery-img" src="screenwindowsvhs.gif" alt="VHS Screen">
+                    <img class="gallery-img" src="images (16).jpeg" alt="Image 16">
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="changeSlide(-1)">◀ Назад</button>
+                    <button class="gallery-btn" onclick="changeSlide(1)">Вперед ▶</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="feed-title">💾 Мой Борт-Журнал</div>
+
+        <!-- ПОСТЫ -->
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 21:54 MSK // Апгрейд</div>
+            <h3>Интеграция галереи артов и кастомного курсора</h3>
+            <p>Интерфейс моего пространства выходит на пик кастомизации. Сегодня я полностью подключил интерактивное децентрализованное кольцо Веб-ринга, связав свой сайт со стильными мировыми инди-блогами. В шапку добавил кастомный движок курсора: теперь вместо стандартной стрелочки по экрану летает пиксельный компакт-диск! Ну и главное обновление — запустил встроенное окно Галереи, куда собрал крутейшие арты Interior_03, screenwindowsvhs и другие медиафайлы. Всё работает автономно и плавно!💾💿👾</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 20:35 MSK // Эволюция</div>
+            <h3>Изучение IndieWeb и апгрейд интерфейса</h3>
+            <p>Продолжаю глубоко погружаться в культуру независимого интернета. Сегодня мой сайт пережил масштабную эволюцию: я полностью переработал логику медиасистемы, избавился от заблокированных корпоративных плееров и запустил музыку локально. Попутно добавил интерактивное системное окно с историей инди-веба и настроил Московское время для хроник. Процесс создания своего пространства затягивает всё сильнее!💻⚡</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 18:45 MSK // Неудача</div>
+            <h3>Неудачное подключение</h3>
+            <p>У меня получилось создать бота и подключить его, но он не отправляет сообщения. Может в будущем получится, но не сейчас👁️(</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 17:15 MSK // Планы</div>
+            <h3>Интеграция с Telegram</h3>
+            <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а robot автоматически отправлял их сюда!💾</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 16:30 MSK // Стрим</div>
+            <h3>Эстетика Webcore и Ретро-инди</h3>
+            <p>Переделал дизайн под визуал старых операционных систем, пытаюсь найти свой стиль в индивебе. Синий фон Windows 95, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!👁️</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 15:45 MSK // Хобби</div>
+            <h3>Мои заметки</h3>
+            <p>Здесь будут мои заметки, мысли и интересные находки.💻</p>
+        </div>
+
+        <div class="post">
+            <div class="post-date">12 сентября 2026 г. // 14:00 MSK // Старт</div>
+            <h3>Мой первый post в IndieWeb!💾</h3>
+            <p>Сегодня я запустил этот сайт прямо со своего телефона. Это потрясающее чувство — владеть собственным кусочком сети без алгоритмов и рекламы из соцсетей.</p>
+        </div>
+
+        <!-- ПОДВАЛ С ТВОИМИ ССЫЛКАМИ И ВЕБ-РИНГОМ -->
+        <div class="blink-footer">
+            <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px 2px #000; background: rgba(0,0,128,0.7); display: inline-block; padding: 4px 10px; border: 1px solid #fff; margin-bottom: 10px;">Кнопки обмена ссылками (Blinks):</div>
+            <div class="blink-buttons">
+                <a href="https://github.com" target="_blank" class="blink-btn gh">GitHub</a>
+                <a href="https://t.me" target="_blank" class="blink-btn tg">Telegram</a>
+            </div>
+
+            <div class="webring-panel">
+                <div class="webring-title">🕸️ Кольцо Инди-Сайтов (Webring)</div>
+                <div>Вы находитесь в децентрализованном кольце дружественных страниц.</div>
+                <div class="webring-controls">
+                    <a href="https://cinni.net" target="_blank" class="webring-btn">◀ Назад</a>
+                    <span style="font-weight:bold; color:#555;">[ Мой Веб-Клуб ]</span>
+                    <a href="https://cameronsworld.net" target="_blank" class="webring-btn">Вперед ▶</a>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- main-content -->
+
+    <script>
+        var audio = document.getElementById("myAudio");
+        var container = document.getElementById("playerContainer");
+        var statusText = document.getElementById("trackStatus");
+        var modal = document.getElementById("factsModal");
+
+        function playMusic() {
+            audio.play().catch(function(error) {
+                console.log("Плеер ожидает клика.");
+            });
+            container.classList.add("playing");
+            statusText.innerText = "▶ p3b3 - The Scooby Snacks";
+        }
+
+        function stopMusic() {
+            audio.pause();
+            audio.currentTime = 0;
+            container.classList.remove("playing");
+            statusText.innerText = "■ p3b3 - The Scooby Snacks";
+        }
+
+        function openFacts() { modal.style.display = "flex"; }
+        function closeFacts() { modal.style.display = "none"; }
+
+        // ЛОГИКА ГАЛЕРЕИ
+        var currentSlide = 0;
+        var slides = document.querySelectorAll(".gallery-img");
+
+        function changeSlide(direction) {
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
