@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvaYosevna // Персональная страница</title>
     <style>
-        /* Стиль и цвета в духе Webcore / Старых ОС */
         body { 
-            font-family: "Courier New", Courier, monospace; /* Настоящий пиксельный шрифт печатной машинки */
+            font-family: "Courier New", Courier, monospace; 
             max-width: 700px; 
             margin: 0 auto; 
             padding: 20px; 
-            background-color: #3b6ea5; /* Тот самый ностальгический синий цвет рабочего стола Windows 95/98 */
+            background-color: #3b6ea5; 
             color: #000000; 
         }
 
-        /* Главное окно-контейнер (как окно программы) */
         .window {
-            background: #d4d0c8; /* Серый пластик старых мониторов */
+            background: #d4d0c8; 
             border: 3px solid;
-            border-color: #fff #808080 #808080 #fff; /* Эффект объемной выпуклой рамки */
+            border-color: #fff #808080 #808080 #fff; 
             padding: 15px;
             box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
             margin-bottom: 25px;
         }
 
-        /* Синяя полоска заголовка окна */
         .window-title {
             background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
@@ -37,25 +34,23 @@
             justify-content: space-between;
         }
 
-        /* Оформление профиля */
         .profile {
             display: flex;
             align-items: center;
             gap: 20px;
             background: #ffffff;
             padding: 15px;
-            border: 2px inset #fff; /* Вдавленная рамка */
+            border: 2px inset #fff; 
         }
         .avatar {
             width: 75px;
             height: 75px;
             border: 2px solid #000;
-            image-rendering: pixelated; /* Чтобы пиксельный монстрик был четким и не размывался */
+            image-rendering: pixelated; 
         }
         .profile-text h1 { font-size: 1.6em; margin: 0 0 5px 0; font-family: sans-serif; font-weight: bold; }
         .profile-text p { margin: 0; font-size: 0.9em; color: #333; }
 
-        /* Раздел блогов и постов */
         .feed-title {
             color: #fff;
             text-shadow: 2px 2px #000;
@@ -80,7 +75,6 @@
         }
         .post h3 { margin: 0 0 8px 0; color: #000080; }
 
-        /* Олдскульные блинки-баннеры в подвале */
         .blink-footer {
             text-align: center;
             margin-top: 40px;
@@ -93,7 +87,6 @@
             gap: 10px;
             margin-top: 15px;
         }
-        /* Кнопки 88x31 пиксель прямо как в 90-х */
         .blink-btn {
             display: inline-block;
             width: 88px;
@@ -127,33 +120,33 @@
         <div class="profile">
             <img class="avatar" src="ChatGPT%20Image%2010%20%D1%81%D0%B5%D0%BD%D1%82.%202026%20%D0%B3.,%2014_24_49.png" alt="EvaYosevna">
             <div class="profile-text">
-                <h1>EvaYosevna 👋</h1>
-                <p>Добро пожаловать на мой независимый инди-сайт. В интернете я Ева, будем знакомы.</p>
+                <h1>Привет, я EvaYosevna! 👋</h1>
+                <p>Добро пожаловать в мой независимый уголок интернета. В интернете я Ева, будем знакомы 👀.</p>
             </div>
         </div>
     </div>
 
     <div class="feed-title">💾 Мой Борт-Журнал</div>
 
-    <!-- Пост 1 -->
+    <!-- ТЕ САМЫЕ ПОСТЫ, КОТОРЫЕ ВЫ ХОТЕЛИ ОСТАВИТЬ -->
     <div class="post">
-        <div class="post-date">12.09.2026 // Стрим</div>
-        <h3>Эстетика Webcore</h3>
-        <p>Переделала дизайн под визуал старых операционных систем и классического индивеба из видео Bat'а. Синий фон, шрифты из кода и оконный интерфейс — теперь атмосфера что надо!</p>
+        <div class="post-date">12 сентября 2026 г.</div>
+        <h3>Мои увлечения</h3>
+        <p>Здесь будут мои заметки, мысли и интересные находки.</p>
     </div>
 
-    <!-- Пост 2 -->
     <div class="post">
-        <div class="post-date">12.09.2026 // Планы</div>
-        <h3>Интеграция с Telegram</h3>
-        <p>Изучаю, как сделать мост, чтобы писать посты в свой ТГ-канал, а робот автоматически отправлял их сюда, в этот список.</p>
+        <div class="post-date">12 сентября 2026 г.</div>
+        <h3>Мой первый пост в IndieWeb!</h3>
+        <p>Сегодня я запустил этот сайт прямо со своего телефона. Это удивительное чувство — владеть своим кусочком сети без алгоритмов и рекламы соцсетей.</p>
     </div>
 
-    <!-- Подвал с блинками (кнопками 88x31) -->
+    <!-- Подвал с блинками -->
     <div class="blink-footer">
         <div style="color: white; font-size: 0.9em; text-shadow: 1px 1px #000;">Кнопки обмена ссылками (Blinks):</div>
         <div class="blink-buttons">
             <a href="https://github.com" target="_blank" class="blink-btn gh">GitHub</a>
+            <!-- Сюда вы вставите свою реальную ссылку на ТГ, когда настроите бота -->
             <a href="t.me/EvaYosevna" target="_blank" class="blink-btn tg">Telegram</a>
         </div>
     </div>
